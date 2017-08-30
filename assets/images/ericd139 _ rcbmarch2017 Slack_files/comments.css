@@ -1,0 +1,29 @@
+@font-face{font-family:appleLogo;src:local("Lucida Grande");unicode-range:U+F8FF}
+.comment{margin:0 0 1rem;padding-left:46px;font-family:Slack-Lato,appleLogo,sans-serif;-webkit-font-smoothing:antialiased;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+.comment.comment_editing .comment_body,.comment.comment_editing .comment_meta{display:none}
+.comment .member_image,.comment_form .member_image{float:left;margin:0 0 0 -46px}
+.comment .member{font-weight:900;padding-right:.25rem;color:#3D3C40!important;font-size:15px}
+.comment .message_current_status{margin-left:-.2rem;margin-right:.15rem}
+.comment .member_unknown{display:inline-block;margin-top:-1px}
+.comment_meta{font-size:.8rem;line-height:1.1rem!important;margin-bottom:0rem;color:#BABBBF}
+.comment_date_star_cog{display:inline-block;position:relative;padding-right:14px;white-space:nowrap}
+.comment .star{margin:0 .25rem}
+.comment_body:empty:after{content:'\00a0'}
+.comment_body .special_formatting_quote{margin:.25rem 0}
+.comment_body .special_formatting_quote .quote_bar{background:#e3e4e6;display:table-cell;width:4px;border-radius:8px}
+.comment_body .special_formatting_quote .content{display:table-cell;padding:0 0 0 12px}
+.comment .special_formatting_quote .content,.comment_body{margin:0;font-size:15px;line-height:20px!important;word-wrap:break-word;max-width:460px;color:#3D3C40}
+.comment_form,.edit_comment_form{margin-bottom:2.5rem;position:relative}
+.comment_actions{position:absolute;top:1px;right:0;display:none;color:#BABBBF;font-size:13px}
+.comment:hover .comment_actions{display:block}
+.comment_actions:hover{color:#555459}
+.file_comment_tip{font-size:.7rem;margin-top:-.25rem;margin-bottom:.25rem;line-height:1rem}
+.icon_quote{color:#EBEDED;font-size:1.8rem;line-height:50px}
+#flex_contents .comment_form{width:100%;padding-left:46px}
+#flex_contents .edit_comment_form{width:100%}
+#flex_contents .comment_form textarea,#flex_contents .edit_comment_form textarea{width:100%;height:100px;color:#3D3C40;font-size:15px}
+#flex_contents .comment_form textarea.autogrow-short,#flex_contents .edit_comment_form textarea.autogrow-short{height:19px;box-shadow:none}
+#file_page .comment_form,#post_page .comment_form{padding-left:46px;margin-bottom:4rem}
+.container #file_page .comment_form,.container #post_page .comment_form{width:505px}
+.container #file_page #file_edit_comment_form,.container #post_page #file_edit_comment_form{width:460px}
+#file_page .comment_form textarea,#post_page .comment_form textarea{height:102px;min-height:102px;font-size:15px}

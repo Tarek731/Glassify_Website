@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html data-locale="en-US" class="no_touch is_win supports_sticky_position supports_flexbox" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	
+	<script async="" src="ericd139%20_%20rcbmarch2017%20Slack_files/slack_beacon.js"></script><script>
+window.ts_endpoint_url = "https:\/\/slack.com\/beacon\/timing";
+
+(function(e) {
+	var n=Date.now?Date.now():+new Date,r=e.performance||{},t=[],a={},i=function(e,n){for(var r=0,a=t.length,i=[];a>r;r++)t[r][e]==n&&i.push(t[r]);return i},o=function(e,n){for(var r,a=t.length;a--;)r=t[a],r.entryType!=e||void 0!==n&&r.name!=n||t.splice(a,1)};r.now||(r.now=r.webkitNow||r.mozNow||r.msNow||function(){return(Date.now?Date.now():+new Date)-n}),r.mark||(r.mark=r.webkitMark||function(e){var n={name:e,entryType:"mark",startTime:r.now(),duration:0};t.push(n),a[e]=n}),r.measure||(r.measure=r.webkitMeasure||function(e,n,r){n=a[n].startTime,r=a[r].startTime,t.push({name:e,entryType:"measure",startTime:n,duration:r-n})}),r.getEntriesByType||(r.getEntriesByType=r.webkitGetEntriesByType||function(e){return i("entryType",e)}),r.getEntriesByName||(r.getEntriesByName=r.webkitGetEntriesByName||function(e){return i("name",e)}),r.clearMarks||(r.clearMarks=r.webkitClearMarks||function(e){o("mark",e)}),r.clearMeasures||(r.clearMeasures=r.webkitClearMeasures||function(e){o("measure",e)}),e.performance=r,"function"==typeof define&&(define.amd||define.ajs)&&define("performance",[],function(){return r}) // eslint-disable-line
+})(window);
+
+</script>
+<script>
+
+;(function() {
+'use strict';
+
+
+window.TSMark = function(mark_label) {
+	if (!window.performance || !window.performance.mark) return;
+	performance.mark(mark_label);
+};
+window.TSMark('start_load');
+
+
+window.TSMeasureAndBeacon = function(measure_label, start_mark_label) {
+	if (start_mark_label === 'start_nav' && window.performance && window.performance.timing) {
+		window.TSBeacon(measure_label, (new Date()).getTime() - performance.timing.navigationStart);
+		return;
+	}
+	if (!window.performance || !window.performance.mark || !window.performance.measure) return;
+	performance.mark(start_mark_label + '_end');
+	try {
+		performance.measure(measure_label, start_mark_label, start_mark_label + '_end');
+		window.TSBeacon(measure_label, performance.getEntriesByName(measure_label)[0].duration);
+	} catch (e) {
+		
+	}
+};
+
+
+if ('sendBeacon' in navigator) {
+	window.TSBeacon = function(label, value) {
+		var endpoint_url = window.ts_endpoint_url || 'https://slack.com/beacon/timing';
+		navigator.sendBeacon(endpoint_url + '?data=' + encodeURIComponent(label + ':' + value), '');
+	};
+} else {
+	window.TSBeacon = function(label, value) {
+		var endpoint_url = window.ts_endpoint_url || 'https://slack.com/beacon/timing';
+		(new Image()).src = endpoint_url + '?data=' + encodeURIComponent(label + ':' + value);
+	};
+}
+})();
+</script>
+ 
+
+<script>
+window.TSMark('step_load');
+</script>	<noscript><meta http-equiv="refresh" content="0; URL=/team/ead139?nojsmode=1" /></noscript>
+<script type="text/javascript">
+if(self!==top)window.document.write("\u003Cstyle>body * {display:none !important;}\u003C\/style>\u003Ca href=\"#\" onclick="+
+"\"top.location.href=window.location.href\" style=\"display:block !important;padding:10px\">Go to Slack.com\u003C\/a>");
+
+(function() {
+	var timer;
+	if (self !== top) {
+		timer = window.setInterval(function() {
+			if (window.$) {
+				try {
+					$('#page').remove();
+					$('#client-ui').remove();
+					window.TS = null;
+					window.clearInterval(timer);
+				} catch(e) {}
+			}
+		}, 200);
+	}
+}());
+
+</script>
+
+<script>(function() {
+	'use strict';
+
+	window.callSlackAPIUnauthed = function(method, args, callback) {
+		var timestamp = Date.now() / 1000;  
+		var version = (window.TS && TS.boot_data) ? TS.boot_data.version_uid.substring(0, 8) : 'noversion';
+		var url = '/api/' + method + '?_x_id=' + version + '-' + timestamp;
+		var req = new XMLHttpRequest();
+
+		req.onreadystatechange = function() {
+			if (req.readyState == 4) {
+				req.onreadystatechange = null;
+				var obj;
+
+				if (req.status == 200 || req.status == 429) {
+					try {
+						obj = JSON.parse(req.responseText);
+					} catch (err) {
+						TS.console.warn(8675309, 'unable to do anything with api rsp');
+					}
+				}
+
+				obj = obj || {
+					ok: false,
+				};
+
+				callback(obj.ok, obj, args);
+			}
+		};
+
+		var async = true;
+		req.open('POST', url, async);
+
+		var form_data = new FormData();
+		var has_data = false;
+		Object.keys(args).forEach(function(k) {
+			if (k[0] === '_') return;
+			form_data.append(k, args[k]);
+			has_data = true;
+		});
+
+		if (has_data) {
+			req.send(form_data);
+		} else {
+			req.send();
+		}
+	};
+})();
+</script>
+
+	
+			
+	
+		<script>
+			if (window.location.host == 'slack.com' && window.location.search.indexOf('story') < 0) {
+				document.cookie = '__cvo_skip_doc=' + escape(document.URL) + '|' + escape(document.referrer) + ';path=/';
+			}
+		</script>
+	
+
+		<script type="text/javascript">
+		
+		try {
+			if(window.location.hash && !window.location.hash.match(/^(#?[a-zA-Z0-9_]*)$/)) {
+				window.location.hash = '';
+			}
+		} catch(e) {}
+		
+	</script>
+
+	<script type="text/javascript">
+				
+			window.optimizely = [];
+			window.dataLayer = [];
+			window.ga = false;
+		
+	
+				(function(e,c,b,f,d,g,a){e.SlackBeaconObject=d;
+		e[d]=e[d]||function(){(e[d].q=e[d].q||[]).push([1*new Date(),arguments])};
+		e[d].l=1*new Date();g=c.createElement(b);a=c.getElementsByTagName(b)[0];
+		g.async=1;g.src=f;a.parentNode.insertBefore(g,a)
+		})(window,document,"script","https://fst.slack-edge.com/4e6c/js/libs/slack_beacon.js","sb");
+		sb('set', 'token', '3307f436963e02d4f9eb85ce5159744c');
+
+					sb('set', 'user_id', "U4GJG8BEG");
+							sb('set', 'user_' + "batch", "signup_api");
+							sb('set', 'user_' + "created", "2017-03-10");
+						sb('set', 'name_tag', "rcbmarch2017" + '/' + "scandrews");
+				sb('track', 'pageview');
+
+		
+		function track(a) {
+			if(window.ga) ga('send','event','web', a);
+			if(window.sb) sb('track', a);
+		}
+		
+
+	</script>
+
+	
+	<meta name="referrer" content="no-referrer">
+		<meta name="superfish" content="nofish">
+
+	<script type="text/javascript">
+
+
+
+var TS_last_log_date = null;
+var TSMakeLogDate = function() {
+	var date = new Date();
+
+	var y = date.getFullYear();
+	var mo = date.getMonth()+1;
+	var d = date.getDate();
+
+	var time = {
+	  h: date.getHours(),
+	  mi: date.getMinutes(),
+	  s: date.getSeconds(),
+	  ms: date.getMilliseconds()
+	};
+
+	Object.keys(time).map(function(moment, index) {
+		if (moment == 'ms') {
+			if (time[moment] < 10) {
+				time[moment] = time[moment]+'00';
+			} else if (time[moment] < 100) {
+				time[moment] = time[moment]+'0';
+			}
+		} else if (time[moment] < 10) {
+			time[moment] = '0' + time[moment];
+		}
+	});
+
+	var str = y + '/' + mo + '/' + d + ' ' + time.h + ':' + time.mi + ':' + time.s + '.' + time.ms;
+	if (TS_last_log_date) {
+		var diff = date-TS_last_log_date;
+		//str+= ' ('+diff+'ms)';
+	}
+	TS_last_log_date = date;
+	return str+' ';
+}
+
+var parseDeepLinkRequest = function(code) {
+	var m = code.match(/"id":"([CDG][A-Z0-9]{8})"/);
+	var id = m ? m[1] : null;
+
+	m = code.match(/"team":"(T[A-Z0-9]{8})"/);
+	var team = m ? m[1] : null;
+
+	m = code.match(/"message":"([0-9]+\.[0-9]+)"/);
+	var message = m ? m[1] : null;
+
+	return { id: id, team: team, message: message };
+}
+
+if ('rendererEvalAsync' in window) {
+	var origRendererEvalAsync = window.rendererEvalAsync;
+	window.rendererEvalAsync = function(blob) {
+		try {
+			var data = JSON.parse(decodeURIComponent(atob(blob)));
+			if (data.code.match(/handleDeepLink/)) {
+				var request = parseDeepLinkRequest(data.code);
+				if (!request.id || !request.team || !request.message) return;
+
+				request.cmd = 'channel';
+				TSSSB.handleDeepLinkWithArgs(JSON.stringify(request));
+				return;
+			} else {
+				origRendererEvalAsync(blob);
+			}
+		} catch (e) {
+		}
+	}
+}
+</script>
+
+
+
+<script type="text/javascript">
+
+	var TSSSB = {
+		call: function() {
+			return false;
+		}
+	};
+
+</script>
+<script>TSSSB.env = (function() {
+	'use strict';
+
+	var v = {
+		win_ssb_version: null,
+		win_ssb_version_minor: null,
+		mac_ssb_version: null,
+		mac_ssb_version_minor: null,
+		mac_ssb_build: null,
+		lin_ssb_version: null,
+		lin_ssb_version_minor: null,
+		desktop_app_version: null,
+	};
+
+	var is_win = (navigator.appVersion.indexOf('Windows') !== -1);
+	var is_lin = (navigator.appVersion.indexOf('Linux') !== -1);
+	var is_mac = !!(navigator.userAgent.match(/(OS X)/g));
+
+	if (navigator.userAgent.match(/(Slack_SSB)/g) || navigator.userAgent.match(/(Slack_WINSSB)/g)) {
+		
+		var parts = navigator.userAgent.split('/');
+		var version_str = parts[parts.length - 1];
+		var version_float = parseFloat(version_str);
+		var version_parts = version_str.split('.');
+		var version_minor = (version_parts.length == 3) ? parseInt(version_parts[2], 10) : 0;
+
+		if (navigator.userAgent.match(/(AtomShell)/g)) {
+			
+			if (is_lin) {
+				v.lin_ssb_version = version_float;
+				v.lin_ssb_version_minor = version_minor;
+			} else if (is_win) {
+				v.win_ssb_version = version_float;
+				v.win_ssb_version_minor = version_minor;
+			} else if (is_mac) {
+				v.mac_ssb_version = version_float;
+				v.mac_ssb_version_minor = version_minor;
+			}
+
+			if (version_parts.length >= 3) {
+				v.desktop_app_version = {
+					major: parseInt(version_parts[0], 10),
+					minor: parseInt(version_parts[1], 10),
+					patch: parseInt(version_parts[2], 10),
+				};
+			}
+		} else {
+			
+			v.mac_ssb_version = version_float;
+			v.mac_ssb_version_minor = version_minor;
+
+			
+			
+			var app_ver = window.macgap && macgap.app && macgap.app.buildVersion && macgap.app.buildVersion();
+			var matches = String(app_ver).match(/(?:\()(.*)(?:\))/);
+			v.mac_ssb_build = (matches && matches.length == 2) ? parseInt(matches[1] || 0, 10) : 0;
+		}
+	}
+
+	return v;
+})();
+</script>
+
+
+	<script type="text/javascript">
+		
+		window.addEventListener('load', function() {
+			var was_TS = window.TS;
+			delete window.TS;
+			TSSSB.call('didFinishLoading');
+			if (was_TS) window.TS = was_TS;
+		});
+	</script>
+	    <title>ead139 | rcbmarch2017 Slack</title>
+    <meta name="author" content="Slack">
+
+	
+		
+	
+	
+		
+	
+				
+	
+	
+
+	
+	
+	
+	
+	
+	
+			<!-- output_css "core" -->
+    <link href="ericd139%20_%20rcbmarch2017%20Slack_files/rollup-plastic.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)">
+
+		<!-- output_css "before_file_pages" -->
+
+	<!-- output_css "file_pages" -->
+
+	
+			<!-- output_css "regular" -->
+    <link href="ericd139%20_%20rcbmarch2017%20Slack_files/jquery_002.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)">
+    <link href="ericd139%20_%20rcbmarch2017%20Slack_files/jquery.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)">
+    <link href="ericd139%20_%20rcbmarch2017%20Slack_files/profile.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)">
+    <link href="ericd139%20_%20rcbmarch2017%20Slack_files/comments.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)">
+    <link href="ericd139%20_%20rcbmarch2017%20Slack_files/lato-2-compressed.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)">
+
+	
+
+	
+	
+		<meta name="robots" content="noindex, nofollow">
+	
+
+	
+<link id="favicon" rel="shortcut icon" href="https://fst.slack-edge.com/66f9/img/icons/favicon-32.png" sizes="16x16 32x32 48x48" type="image/png">
+
+<link rel="icon" href="https://fst.slack-edge.com/0180/img/icons/app-256.png" sizes="256x256" type="image/png">
+
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://fst.slack-edge.com/66f9/img/icons/ios-152.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://fst.slack-edge.com/66f9/img/icons/ios-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://fst.slack-edge.com/66f9/img/icons/ios-120.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://fst.slack-edge.com/66f9/img/icons/ios-114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://fst.slack-edge.com/0180/img/icons/ios-72.png">
+<link rel="apple-touch-icon-precomposed" href="https://fst.slack-edge.com/66f9/img/icons/ios-57.png">
+
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="https://fst.slack-edge.com/66f9/img/icons/app-144.png">
+	
+	<!--[if lt IE 9]>
+	<script src="https://fst.slack-edge.com/ef0d/js/libs/html5shiv.js"></script>
+	<![endif]-->
+
+<style type="text/css"></style><style type="text/css">.p-download_item{min-height:68px;padding:.75rem .75rem .25rem;margin:0 1px 0 .25rem;position:relative;font-weight:400;font-size:1rem;border:1px solid transparent;border-radius:4px;opacity:.8;-webkit-transition:opacity border .1s ease-out .1s 1e-7ms;-moz-transition:opacity .1s border .1s ease-out 1e-7ms;transition:opacity border .1s ease-out .1s 1e-7ms}.p-download_item.progressing,.p-download_item:hover{opacity:1}.p-download_item:hover{border-color:#e8e8e8}.p-download_item:hover .p-download_item__name_row{padding-right:2rem}.p-download_item:hover .p-download_item__action_icon,.p-download_item:hover .p-download_item__actions{opacity:1;-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0)}.p-download_item:hover .p-download_item__link--remove{opacity:1}.p-download_item.not_started .p-download_item__name_row,.p-download_item.progressing .p-download_item__name_row{padding-right:6rem}.p-download_item.not_started .p-download_item__action_icon,.p-download_item.not_started .p-download_item__link--remove,.p-download_item.progressing .p-download_item__action_icon,.p-download_item.progressing .p-download_item__link--remove{display:none}.p-download_item:not(.progressing){cursor:pointer}.p-download_item.hidden_with_fade_out_and_shrink{opacity:0;height:0!important;margin-top:0!important;padding-top:0!important;padding-bottom:0!important;overflow:hidden;-webkit-transition:opacity .3s ease-out 0s,height .3s ease-out .2s,margin-top .3s ease-out .2s,padding-top .3s ease-out .2s,padding-bottom .3s ease-out ease-out .2s .2s 1e-7ms;-moz-transition:opacity .3s ease-out 0s,height .3s ease-out .2s,margin-top .3s ease-out .2s,padding-top .3s ease-out .2s,padding-bottom .3s ease-out .2s .2s ease-out 1e-7ms;transition:opacity .3s ease-out 0s,height .3s ease-out .2s,margin-top .3s ease-out .2s,padding-top .3s ease-out .2s,padding-bottom .3s ease-out ease-out .2s .2s 1e-7ms;-webkit-transition:opacity .3s ease-out 0s,height .3s ease-out .2s,margin-top .3s ease-out .2s,padding-top .3s ease-out .2s,padding-bottom .3s ease-out .2s;-moz-transition:opacity .3s ease-out 0s,height .3s ease-out .2s,margin-top .3s ease-out .2s,padding-top .3s ease-out .2s,padding-bottom .3s ease-out .2s;transition:opacity .3s ease-out 0s,height .3s ease-out .2s,margin-top .3s ease-out .2s,padding-top .3s ease-out .2s,padding-bottom .3s ease-out .2s}.p-download_item__icon_container{float:left;margin:1px 0 .5rem;position:relative}.p-download_item__action_icon{position:absolute;right:-8px;bottom:-2px;width:18px;height:18px;line-height:15px;border-radius:50%;background:#2d9ee0;box-shadow:0 0 0 3px #fff;color:#fff;opacity:0;-webkit-transform:translate3d(0,-6px,0);-moz-transform:translate3d(0,-6px,0);-ms-transform:translate3d(0,-6px,0);transform:translate3d(0,-6px,0);-webkit-transition:-webkit-transform .1s ease-out,opacity .1s ease-out;-moz-transition:-moz-transform .1s ease-out,opacity .1s ease-out;transition:transform .1s ease-out,opacity .1s ease-out}.p-download_item__action_icon--image{bottom:-10px}.p-download_item__action_icon:before{margin-left:-1px}.p-download_item__action_icon.snippet{background:#4d394b}.p-download_item__action_icon.post,.p-download_item__action_icon.space{background:#66c79e}.p-download_item__action_icon.doc,.p-download_item__action_icon.docx{background:#2c4098}.p-download_item__action_icon.xls,.p-download_item__action_icon.xlsm,.p-download_item__action_icon.xlsx,.p-download_item__action_icon.xltx{background:#377437}.p-download_item__action_icon.ppt,.p-download_item__action_icon.pptx{background:#e05a30}.p-download_item__action_icon.ai,.p-download_item__action_icon.sketch{background:#f4993c}.p-download_item__action_icon.psd{background:#56b6de}.p-download_item__action_icon.indd{background:#eb81ab}.p-download_item__action_icon.fla,.p-download_item__action_icon.swf{background:#a72428}.p-download_item__action_icon.ipa{background:#9ea0a7}.p-download_item__action_icon.apk{background:#a4ca3a}.p-download_item__action_icon.dropbox{background:#007ee5}.p-download_item__action_icon.gpres{background:#f4b400}.p-download_item__action_icon.gsheet{background:#0f9d58}.p-download_item__action_icon.gdoc{background:#4285f4}.p-download_item__action_icon.gdraw,.p-download_item__action_icon.gform,.p-download_item__action_icon.pdf{background:#db4437}.p-download_item__image{border:1px solid #a0a0a2;border-radius:.25rem}.p-download_item__container{margin-left:2.75rem;position:relative;z-index:1}.p-download_item__container>div{margin-bottom:.5rem}.p-download_item__container .p-download_item__name_row{line-height:normal;color:#5a5b5d;position:relative;padding-right:0;margin-bottom:0}.p-download_item__name_row:not(:empty){font-weight:700;padding-bottom:.5rem}.p-download_item__container .p-download_item__extra_actions{position:absolute;top:2px;right:0;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;opacity:1;pointer-events:auto}a.p-download_item__link--cancel,a.p-download_item__link--pause,a.p-download_item__link--resume{font-size:.8rem;margin-left:5px;color:#a0a0a2}.p-download_item__link--remove{position:absolute;top:50%;right:10px;z-index:2;opacity:0;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);-webkit-transition:opacity .1s,color .1s ease-out .2s 1e-7ms;-moz-transition:opacity .1s,color .1s .2s ease-out 1e-7ms;transition:opacity .1s,color .1s ease-out .2s 1e-7ms;-webkit-transition:opacity .1s,color .1s;-moz-transition:opacity .1s,color .1s;transition:opacity .1s,color .1s}.p-download_item__link--remove:hover{color:#eb4d5c}.p-download_item__size_row{color:#a0a0a2;font-size:.8rem;position:relative;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex}.p-download_item__size{margin-right:3px}.p-download_item__actions{display:inline-block;position:absolute;left:0;top:0;width:100%;background:#fff;opacity:0;-webkit-transform:translate3d(0,-50%,0);-moz-transform:translate3d(0,-50%,0);-ms-transform:translate3d(0,-50%,0);transform:translate3d(0,-50%,0);-webkit-transition:-webkit-transform .1s ease-out,opacity .1s ease-out;-moz-transition:-moz-transform .1s ease-out,opacity .1s ease-out;transition:transform .1s ease-out,opacity .1s ease-out}a.p-download_item__link--open,a.p-download_item__link--retry,a.p-download_item__link--show{opacity:1;display:none;position:static;font-weight:700;font-size:.9rem;color:#a0a0a2;top:0;left:.5rem;white-space:nowrap;pointer-events:none}.p-download_item__time_remaining{opacity:1;-ms-flex:none;-webkit-flex:none;flex:none;margin-left:auto;white-space:nowrap}.p-download_item__progress_row,.p-download_item__time_remaining{height:6px;border-width:0;border-radius:3px}.p-download_item__progress_row{opacity:1;background-color:#e8e8e8}.p-download_item__progress{background-color:#2d9ee0;width:0}.p-download_item:not(.progressing) .p-download_item__extra_actions,.p-download_item:not(.progressing) .p-download_item__time_remaining{opacity:0;pointer-events:none}.p-download_item:not(.progressing) .p-download_item__progress_row{display:none}.p-download_item.completed .p-download_item__link--show{opacity:1;pointer-events:auto;display:block}.p-download_item.completed .p-download_item__action_icon:before{content:"\E146"}.p-download_item.cancelled .p-download_item__action_icon:before,.p-download_item.interrupted .p-download_item__action_icon:before{content:"\E147";margin-top:1px}.p-download_item.cancelled .p-download_item__link--retry,.p-download_item.interrupted .p-download_item__link--retry{opacity:1;pointer-events:auto;display:block}.p-download_item.completed .p-download_item__partial_size{display:none}.p-download_item_highlighter{z-index:2!important;top:0!important;left:0!important;right:0!important;width:auto!important;box-sizing:content-box;padding-bottom:0!important;border-radius:4px}.p-download_item:last-of-type{margin-bottom:100px}.p-downloads_list--shift_down .p-download_item.completed .p-download_item__action_icon{border-radius:3px}.p-downloads_list--shift_down .p-download_item.completed .p-download_item__action_icon:before{content:"\E311"}.p-downloads_list--shift_down .p-download_item.completed .p-download_item__link--show{display:none}.p-downloads_list--shift_down .p-download_item.completed .p-download_item__link--open{display:block}</style><style type="text/css">.p-downloads_list{font-family:Slack-Lato,appleLogo,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;outline:none;position:relative}.p-downloads_list__heading{padding:1rem;margin-bottom:.25rem}.p-downloads_list__heading_row{-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-moz-align-items:center;align-items:center}.p-downloads_list__clear_all{padding-right:1rem;padding-left:.5rem;margin-right:1rem;font-size:1rem;border-right:1px solid #cfcfcf}.p-downloads_list__flex_close{height:1.5rem;padding-top:.1rem}.p-downloads_list__empty{padding:8rem 4rem;font-size:1rem;line-height:1.5rem;text-align:center}.p-downloads_list__empty_hint_text{max-width:12rem;margin:1rem auto}.p-downloads_list__empty_download_icon{vertical-align:middle;margin:0 .25rem}.p-downloads_list__shift_hint{display:block;position:absolute;height:100px;bottom:0;left:0;right:1rem;text-align:center;line-height:100px;color:#717274;font-size:.9rem;background:linear-gradient(180deg,hsla(0,0%,100%,0),#fff 25%,#fff);z-index:5}.p-downloads_list__keyboard_key{display:inline-block;border:1px solid #e8e8e8;line-height:1rem;padding:.2rem .4rem;margin:0 .2rem;font-weight:700;font-size:.8rem;border-bottom-width:2px;border-radius:4px}</style><style type="text/css">.c-tooltip,.c-tooltip__tip{display:inline-block}.c-tooltip__tip{color:#fff;background-color:#2c2d30;max-width:250px;padding:.5rem;border-radius:4px;position:relative;font-size:.8125rem;font-weight:700;text-align:center}.c-tooltip__tip:after{position:absolute;content:"";width:0;height:0;margin:-5px;border:6px solid transparent}.c-tooltip__tip--left{margin-right:.5rem}.c-tooltip__tip--left:after{border-left-color:#2c2d30;right:-6px;top:50%}.c-tooltip__tip--right{margin-left:.5rem}.c-tooltip__tip--right:after{border-right-color:#2c2d30;left:-6px;top:50%}.c-tooltip__tip--top{margin-bottom:.5rem}.c-tooltip__tip--top:after{border-top-color:#2c2d30;bottom:-6px;left:50%}.c-tooltip__tip--top-left{margin-bottom:.5rem}.c-tooltip__tip--top-left:after{border-top-color:#2c2d30;bottom:-6px;left:50%;left:25%}.c-tooltip__tip--top-right{margin-bottom:.5rem}.c-tooltip__tip--top-right:after{border-top-color:#2c2d30;bottom:-6px;left:50%;left:75%}.c-tooltip__tip--bottom{margin-top:.5rem}.c-tooltip__tip--bottom:after{border-bottom-color:#2c2d30;top:-6px;left:50%}.c-tooltip__tip--bottom-left{margin-top:.5rem}.c-tooltip__tip--bottom-left:after{border-bottom-color:#2c2d30;top:-6px;left:50%;left:25%}.c-tooltip__tip--bottom-right{margin-top:.5rem}.c-tooltip__tip--bottom-right:after{border-bottom-color:#2c2d30;top:-6px;left:50%;left:75%}.c-tooltip__tip--success{background-color:#2ab27b}.c-tooltip__tip--success.c-tooltip__tip--left:after{border-left-color:#2ab27b}.c-tooltip__tip--success.c-tooltip__tip--right:after{border-right-color:#2ab27b}.c-tooltip__tip--success.c-tooltip__tip--top-left:after,.c-tooltip__tip--success.c-tooltip__tip--top-right:after,.c-tooltip__tip--success.c-tooltip__tip--top:after{border-top-color:#2ab27b}.c-tooltip__tip--success.c-tooltip__tip--bottom-left:after,.c-tooltip__tip--success.c-tooltip__tip--bottom-right:after,.c-tooltip__tip--success.c-tooltip__tip--bottom:after{border-bottom-color:#2ab27b}</style><style type="text/css">.c-presence--active{color:#93cc93}.c-presence--away{color:#717274}</style><style type="text/css">.p-channel_sidebar{width:220px;height:100vh;position:relative;background:#4d394b;padding:0;color:#fff}.p-channel_sidebar__header{padding:0 .5rem;color:hsla(0,0%,100%,.7);margin:0}.p-channel_sidebar__banner{text-align:center;position:absolute;display:block;z-index:2;color:#fff;left:.5rem;right:.5rem;font-weight:700;text-transform:uppercase;font-size:.75rem;line-height:1.5rem}.p-channel_sidebar__banner--top{border-top-right-radius:0;border-bottom-right-radius:.25rem;border-bottom-left-radius:.25rem;border-top-left-radius:0;background-clip:padding-box;top:0}.p-channel_sidebar__banner--bottom{border-top-right-radius:.25rem;border-bottom-right-radius:0;border-bottom-left-radius:0;border-top-left-radius:.25rem;background-clip:padding-box;bottom:0}.p-channel_sidebar__banner--mentions{background:#eb4d5c}.p-channel_sidebar__banner--unreads{background:#2d9ee0}.p-channel_sidebar__channel,.p-channel_sidebar__link{display:block;height:26px;line-height:1.625rem;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;color:#fff;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem;border-bottom-left-radius:0;border-top-left-radius:0;background-clip:padding-box;padding:0 .25rem 0 .5rem;margin-right:.5rem}.p-channel_sidebar__channel:after,.p-channel_sidebar__channel:before,.p-channel_sidebar__link:after,.p-channel_sidebar__link:before{font-family:Slack;font-style:normal;font-weight:400;display:inline-block;width:20px;color:hsla(0,0%,100%,.7)}.p-channel_sidebar__channel:before,.p-channel_sidebar__link:before{font-size:1rem;float:left}.p-channel_sidebar__channel:after,.p-channel_sidebar__link:after{float:right}.p-channel_sidebar__channel:hover,.p-channel_sidebar__link:hover{color:#fff;background:#3e313c;text-decoration:none}.p-channel_sidebar__channel:before{content:"\E104"}.p-channel_sidebar__channel--private:before{content:"\E503";margin-top:-2px}.p-channel_sidebar__channel--shared:after{content:"\E165";margin-top:-1px}.p-channel_sidebar__channel--ent-shared:after{content:"\E166"}.p-channel_sidebar__channel--mpim:before{font-size:1.25rem;margin:-3px 2px 0 -2px}.p-channel_sidebar__channel--mpim[data-user-count="2"]:before{content:"\E521"}.p-channel_sidebar__channel--mpim[data-user-count="3"]:before{content:"\E522"}.p-channel_sidebar__channel--mpim[data-user-count="4"]:before{content:"\E523"}.p-channel_sidebar__channel--mpim[data-user-count="5"]:before{content:"\E524"}.p-channel_sidebar__channel--mpim[data-user-count="6"]:before{content:"\E525"}.p-channel_sidebar__channel--mpim[data-user-count="7"]:before{content:"\E526"}.p-channel_sidebar__channel--mpim[data-user-count="8"]:before{content:"\E527"}.p-channel_sidebar__channel--mpim[data-user-count="9"]:before{content:"\E528"}.p-channel_sidebar__channel--im:before{content:""}.p-channel_sidebar__channel--im .c-presence{margin:-4px 1px 0 -1px;float:left}.p-channel_sidebar__channel--im .c-presence--active{color:#38978d}.p-channel_sidebar__channel--im .c-presence--away{color:hsla(0,0%,100%,.7)}.p-channel_sidebar__channel--im.p-channel_sidebar__channel--selected .c-presence--active{color:#fff}.p-channel_sidebar__channel--im-slackbot:before{content:"\E515";font-size:1.125rem;margin-top:-3px}.p-channel_sidebar__channel--selected,.p-channel_sidebar__channel--selected:hover,.p-channel_sidebar__link--selected,.p-channel_sidebar__link--selected:hover{background:#4c9689}.p-channel_sidebar__channel--selected:after,.p-channel_sidebar__channel--selected:before,.p-channel_sidebar__channel--selected:hover:after,.p-channel_sidebar__channel--selected:hover:before,.p-channel_sidebar__link--selected:after,.p-channel_sidebar__link--selected:before,.p-channel_sidebar__link--selected:hover:after,.p-channel_sidebar__link--selected:hover:before{color:#fff}.p-channel_sidebar__channel--muted:not(.p-channel_sidebar__channel--selected),.p-channel_sidebar__channel--muted:not(.p-channel_sidebar__channel--selected):after,.p-channel_sidebar__channel--muted:not(.p-channel_sidebar__channel--selected):before{color:hsla(0,0%,100%,.25)}.p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted){font-weight:900}.p-channel_sidebar__channel--draft:before{content:"\E024";color:#fff;font-size:.875rem;margin:1px -1px 0 1px}.p-channel_sidebar__channel--archived:before{content:"\E534";margin:-3px 2px 0 -2px;font-size:1.25rem}.p-channel_sidebar__badge{float:right;background:#eb4d5c;padding:.1rem .6rem;border-radius:1rem;line-height:1rem;margin:3px 0;font-size:.75rem;font-weight:700;color:#fff}.p-channel_sidebar__status{margin-left:.5rem}.p-channel_sidebar__you_label{margin-left:.5rem;font-weight:400;color:hsla(0,0%,100%,.7)}.p-channel_sidebar__link--unread{font-weight:900}.p-channel_sidebar__link--all-unreads:before{content:"\E103"}.p-channel_sidebar__link--all-threads:before{content:"\E004"}.p-channel_sidebar__link--invites:before{content:"\E281"}</style><style type="text/css"> #footer {bottom: 0;position: absolute;}@media only screen and (max-height: 833px) { nav#api_nav #footer, nav#site_nav #footer { position: relative; bottom: auto; } }
+@media only screen and (min-width: 1441px) { body:not(.nav_open) nav#site_nav #footer { position: relative; bottom: auto; } }</style></head>
+
+<body class="light_theme">
+
+		  			<script>
+		
+			var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			if (w > 1440) document.querySelector('body').classList.add('widescreen');
+		
+		</script>
+	
+  	
+	
+
+			
+
+<nav id="site_nav" class="">
+
+	<div id="site_nav_contents">
+
+		<div id="user_menu">
+			<div id="user_menu_contents">
+				<div id="user_menu_avatar">
+										<span class="member_image thumb_48" style="background-image: url('https://avatars.slack-edge.com/2017-03-29/162494448471_38ba914234eeac7e7545_192.gif')" data-thumb-size="48" data-member-id="U4GJG8BEG"></span>
+					<span class="member_image thumb_36" style="background-image: url('https://avatars.slack-edge.com/2017-03-29/162494448471_38ba914234eeac7e7545_72.gif')" data-thumb-size="36" data-member-id="U4GJG8BEG"></span>
+				</div>
+				<h3>Signed in as</h3>
+				<span id="user_menu_name">scandrews</span>
+			</div>
+		</div>
+
+		<div class="nav_contents">
+
+			<ul class="primary_nav">
+									<li><a href="https://rcbmarch2017.slack.com/messages" data-qa="app"><i class="ts_icon ts_icon_angle_arrow_up_left"></i>Back to Slack</a></li>
+								<li><a href="https://rcbmarch2017.slack.com/home" data-qa="home"><i class="ts_icon ts_icon_home"></i>Home</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/account" data-qa="account_profile"><i class="ts_icon ts_icon_user"></i>Account &amp; Profile</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/apps/manage" data-qa="configure_apps" target="_blank"><i class="ts_icon ts_icon_plug"></i>Configure Apps</a></li>
+									<li><a href="https://rcbmarch2017.slack.com/archives" data-qa="archives"><i class="ts_icon ts_icon_archive"></i>Message Archives</a></li>
+								<li><a href="https://rcbmarch2017.slack.com/files" data-qa="files"><i class="ts_icon ts_icon_all_files clear_blue"></i>Files</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/team" data-qa="team_directory"><i class="ts_icon ts_icon_team_directory"></i>Directory</a></li>
+															<li><a href="https://rcbmarch2017.slack.com/stats" data-qa="statistics"><i class="ts_icon ts_icon_dashboard"></i>Statistics</a></li>
+																		<li><a href="https://rcbmarch2017.slack.com/customize" data-qa="customize"><i class="ts_icon ts_icon_magic"></i>Customize</a></li>
+													<li><a href="https://rcbmarch2017.slack.com/account/team" data-qa="team_settings"><i class="ts_icon ts_icon_cog_o"></i>Team Settings</a></li>
+							</ul>
+
+			
+		</div>
+
+		<div id="footer">
+
+			<ul id="footer_nav">
+				<li><a href="https://rcbmarch2017.slack.com/is" data-qa="tour">Tour</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/downloads" data-qa="download_apps">Download Apps</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/brand-guidelines" data-qa="brand_guidelines">Brand Guidelines</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/help" data-qa="help">Help</a></li>
+				<li><a href="https://api.slack.com/" target="_blank" data-qa="api">API<i class="ts_icon ts_icon_external_link small_left_margin ts_icon_inherit"></i></a></li>
+								<li><a href="https://rcbmarch2017.slack.com/pricing" data-qa="pricing">Pricing</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/help/requests/new" data-qa="contact">Contact</a></li>
+				<li><a href="https://rcbmarch2017.slack.com/terms-of-service" data-qa="policies">Policies</a></li>
+				<li><a href="http://slackhq.com/" target="_blank" data-qa="our_blog">Our Blog</a></li>
+				<li><a href="https://slack.com/signout/148588209220?crumb=s-1494807179-db90346b9b-%E2%98%83" data-qa="sign_out">Sign Out<i class="ts_icon ts_icon_sign_out small_left_margin ts_icon_inherit"></i></a></li>
+			</ul>
+
+			<p id="footer_signature">Made with <i class="ts_icon ts_icon_heart"></i> by Slack</p>
+
+		</div>
+
+	</div>
+</nav>	
+			
+<header class="headroom headroom--top">
+			<a id="menu_toggle" class="" data-qa="menu_toggle_hamburger">
+			<span class="menu_icon"></span>
+			<span class="menu_label">Menu</span>
+			<span class="vert_divider"></span>
+		</a>
+		<h1 id="header_team_name" class="inline_block" data-qa="header_team_name">
+			<a href="https://rcbmarch2017.slack.com/home">
+				<i class="ts_icon ts_icon_home"></i>
+				rcbmarch2017
+			</a>
+		</h1>
+		<div class="header_nav">
+			<div class="header_btns float_right">
+				<a id="team_switcher" data-qa="team_switcher">
+					<i class="ts_icon ts_icon_th_large ts_icon_inherit"></i>
+					<span class="block label">Teams</span>
+				</a>
+				<a href="https://rcbmarch2017.slack.com/help" id="help_link" data-qa="help_link">
+					<i class="ts_icon ts_icon_life_ring ts_icon_inherit"></i>
+					<span class="block label">Help</span>
+				</a>
+															<a href="https://rcbmarch2017.slack.com/messages" data-qa="launch">
+							<img src="ericd139%20_%20rcbmarch2017%20Slack_files/ios-64.png" srcset="https://fst.slack-edge.com/66f9/img/icons/ios-32.png 1x, https://fst.slack-edge.com/66f9/img/icons/ios-64.png 2x" title="Slack" alt="Launch Slack">
+							<span class="block label">Launch</span>
+						</a>
+												</div>
+				                    <ul id="header_team_nav" data-qa="team_switcher_menu">
+	                        	                            <li class="active">
+	                            	<a href="https://rcbmarch2017.slack.com/home" target="https://rcbmarch2017.slack.com/">
+	                            			                            			<i class="ts_icon small ts_icon_check_circle_o active_icon s"></i>
+	                            			                            			                            			<i class="team_icon small default">R</i>
+	                            			                            		<span class="switcher_label team_name">rcbmarch2017</span>
+	                            	</a>
+	                            </li>
+	                        	                        <li id="add_team_option"><a href="https://slack.com/signin" target="_blank"><i class="ts_icon ts_icon_plus team_icon small"></i> <span class="switcher_label">Sign in to another team...</span></a></li>
+	                    </ul>
+	                		</div>
+	
+	
+	
+</header>	
+	<div id="page" style="min-height: 890px;">
+
+		<div id="page_contents" data-qa="page_contents" class="">
+
+
+<h1><i class="ts_icon ts_icon_team_directory candy_red"></i> <a href="https://rcbmarch2017.slack.com/team" class="indifferent_grey">Directory</a></h1>
+
+
+<div class="clearfix"></div>
+
+
+
+<div id="member_preview_web_container" class="card ">
+
+<div class="member_details clearfix display_flex flex_direction_column align_items_center">
+
+
+
+		<span class="  member_image thumb_512" data-member-id="U4FNBE4HL" data-thumb-size="512" style="background-image: url('https://ca.slack-edge.com/T4CHA656G-U4FNBE4HL-d9746a8b48ba-512'), url('https://ca.slack-edge.com/T4CHA656G-U4FNBE4HL-d9746a8b48ba-48')" aria-hidden="true"></span>
+
+
+	<div class="member_name_and_presence lato">
+					<a href="https://rcbmarch2017.slack.com/messages/@ead139" target="/messages/@ead139" data-member-id="U4FNBE4HL" class="member_name internal_im_link">Erick Delgado</a>
+	</div>
+
+
+
+
+		<div class="member_action_bar">
+						<a href="https://rcbmarch2017.slack.com/messages/@ead139" target="new" class="btn btn_outline">Message</a>
+							<a href="https://rcbmarch2017.slack.com/archives/ead139" class="btn btn_outline">View Archives</a>
+
+
+		</div>
+
+		<hr class="member_details_divider with_current_status small_bottom_margin">
+
+			<table class="member_data_table lato no_bottom_margin">
+				<tbody><tr>
+					<td><span class="small_right_padding old_petunia_grey" title="Status">Status</span></td>
+						<td class="current_status"><span class="emoji-outer emoji-sizer" style="background: url(https://fst.slack-edge.com/bfaba/img/emoji_2016_06_08/sheet_apple_64_indexed_256colors.png);background-position:27.5% 57.5%;background-size:4100%" title="house_with_garden"></span><span class="prevent_copy_paste" aria-label=" "></span><span class="prevent_copy_paste" aria-label="Working remotely"></span></td>
+					</tr>
+				
+			</tbody></table>
+
+			<hr class="member_details_divider with_current_status small_top_margin">
+
+		<table class="member_data_table lato">
+					<tbody><tr>
+						<td><span class="small_right_padding old_petunia_grey" title="Username">Username</span></td>
+									<td><a href="https://rcbmarch2017.slack.com/messages/@ead139" target="new" title="@ead139">@ead139</a></td>
+					</tr>
+						<tr>
+							<td><span class="small_right_padding old_petunia_grey" title="Timezone">Timezone</span></td>
+							<td class="member_preview_timezone"><span class="timezone_label" data-member-id="U4FNBE4HL"><span class="timezone_value">8:13 PM</span> local time</span></td>
+						</tr>
+				<tr>
+					<td><span class="small_right_padding old_petunia_grey" title="Email">Email</span></td>
+					<td><a href="mailto:taken404@gmail.com" title="Email ead139">taken404@gmail.com</a></td>
+				</tr>
+			</tbody><tbody id="member_data_table_team_fields">
+				
+			</tbody>
+		</table>
+
+
+
+
+	<div class="clear_both larger_bottom_margin"></div>
+
+</div>
+
+ </div>
+
+
+
+		
+	</div>
+	<div id="overlay"></div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	/**
+	 * A placeholder function that the build script uses to
+	 * replace file paths with their CDN versions.
+	 *
+	 * @param {String} file_path - File path
+	 * @returns {String}
+	 */
+	function vvv(file_path) {
+
+		var vvv_warning = 'You cannot use vvv on dynamic values. Please make sure you only pass in static file paths.';
+		if (TS && TS.warn) {
+			TS.warn(vvv_warning);
+		} else {
+			console.warn(vvv_warning);
+		}
+
+		return file_path;
+	}
+
+	var cdn_url = "https:\/\/slack.global.ssl.fastly.net";
+	var vvv_abs_url = "https:\/\/slack.com\/";
+	var inc_js_setup_data = {
+		emoji_sheets: {
+			apple: 'https://fst.slack-edge.com/bfaba/img/emoji_2016_06_08/sheet_apple_64_indexed_256colors.png',
+			google: 'https://fst.slack-edge.com/f360/img/emoji_2016_06_08/sheet_google_64_indexed_128colors.png',
+			twitter: 'https://fst.slack-edge.com/bfaba/img/emoji_2016_06_08/sheet_twitter_64_indexed_128colors.png',
+			emojione: 'https://fst.slack-edge.com/bfaba/img/emoji_2016_06_08/sheet_emojione_64_indexed_128colors.png',
+		},
+	};
+</script>
+			<script type="text/javascript">
+<!--
+	// common boot_data
+	var boot_data = {
+		start_ms: Date.now(),
+		app: 'web',
+		user_id: 'U4GJG8BEG',
+		no_login: false,
+		version_ts: '1494784463',
+		version_uid: '94e73317adc5ff6747b95b5857a30d44c7dc59ee',
+		cache_version: "v16-giraffe",
+		cache_ts_version: "v2-bunny",
+		redir_domain: 'slack-redir.net',
+		signin_url: 'https://slack.com/signin',
+		abs_root_url: 'https://slack.com/',
+		api_url: '/api/',
+		team_url: 'https://rcbmarch2017.slack.com/',
+		image_proxy_url: 'https://slack-imgs.com/',
+		beacon_timing_url: "https:\/\/slack.com\/beacon\/timing",
+		beacon_error_url: "https:\/\/slack.com\/beacon\/error",
+		clog_url: "clog\/track\/",
+		api_token: 'xoxs-148588209220-152628283492-152522233875-5278139832',
+		ls_disabled: false,
+
+		vvv_paths: {
+						lz_string: "https:\/\/fst.slack-edge.com\/57b04\/js\/libs\/lz-string-1.4.4.js",
+						codemirror: "https:\/\/fst.slack-edge.com\/cb0fd\/js\/libs\/codemirror.js",
+			codemirror_addon_simple: "https:\/\/fst.slack-edge.com\/7adb\/js\/libs\/codemirror\/addon\/simple.js",
+			codemirror_load: "https:\/\/fst.slack-edge.com\/3d89b\/js\/codemirror_load.js",
+		},
+
+		notification_sounds: [{"value":"b2.mp3","label":"Ding","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/b2.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/b2.ogg"},{"value":"animal_stick.mp3","label":"Boing","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/animal_stick.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/animal_stick.ogg"},{"value":"been_tree.mp3","label":"Drop","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/been_tree.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/been_tree.ogg"},{"value":"complete_quest_requirement.mp3","label":"Ta-da","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/complete_quest_requirement.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/complete_quest_requirement.ogg"},{"value":"confirm_delivery.mp3","label":"Plink","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/confirm_delivery.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/confirm_delivery.ogg"},{"value":"flitterbug.mp3","label":"Wow","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/flitterbug.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/flitterbug.ogg"},{"value":"here_you_go_lighter.mp3","label":"Here you go","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/here_you_go_lighter.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/here_you_go_lighter.ogg"},{"value":"hi_flowers_hit.mp3","label":"Hi","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/hi_flowers_hit.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/hi_flowers_hit.ogg"},{"value":"knock_brush.mp3","label":"Knock Brush","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/knock_brush.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/knock_brush.ogg"},{"value":"save_and_checkout.mp3","label":"Whoa!","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/save_and_checkout.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/save_and_checkout.ogg"},{"value":"item_pickup.mp3","label":"Yoink","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/item_pickup.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/item_pickup.ogg"},{"value":"hummus.mp3","label":"Hummus","url":"https:\/\/slack.global.ssl.fastly.net\/7fa9\/sounds\/push\/hummus.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/hummus.ogg"},{"value":"none","label":"None"}],
+		alert_sounds: [{"value":"frog.mp3","label":"Frog","url":"https:\/\/slack.global.ssl.fastly.net\/a34a\/sounds\/frog.mp3"}],
+		call_sounds: [{"value":"call\/alert_v2.mp3","label":"Alert","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/alert_v2.mp3"},{"value":"call\/incoming_ring_v2.mp3","label":"Incoming ring","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/incoming_ring_v2.mp3"},{"value":"call\/outgoing_ring_v2.mp3","label":"Outgoing ring","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/outgoing_ring_v2.mp3"},{"value":"call\/pop_v2.mp3","label":"Incoming reaction","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/pop_v2.mp3"},{"value":"call\/they_left_call_v2.mp3","label":"They left call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/they_left_call_v2.mp3"},{"value":"call\/you_left_call_v2.mp3","label":"You left call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/you_left_call_v2.mp3"},{"value":"call\/they_joined_call_v2.mp3","label":"They joined call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/they_joined_call_v2.mp3"},{"value":"call\/you_joined_call_v2.mp3","label":"You joined call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/you_joined_call_v2.mp3"},{"value":"call\/confirmation_v2.mp3","label":"Confirmation","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/confirmation_v2.mp3"}],
+		call_sounds_version: "v2",
+		max_team_handy_rxns: 5,
+		max_channel_handy_rxns: 5,
+		max_poll_handy_rxns: 7,
+		max_handy_rxns_title_chars: 30,
+				slack_timezones: [["(UTC-11:00) Midway Island, American Samoa","Pacific\/Midway",true,"Samoa Standard Time",null],["(UTC-10:00) Aleutian Islands","America\/Adak",false,"Hawaii-Aleutian Standard Time","Hawaii-Aleutian Daylight Time"],["(UTC-10:00) Hawaii","Pacific\/Honolulu",true,"Hawaii-Aleutian Standard Time",null],["(UTC-09:30) Marquesas Islands","Pacific\/Marquesas",true,"Marquesas Time",null],["(UTC-09:00) Alaska","America\/Anchorage",false,"Alaska Standard Time","Alaska Daylight Time"],["(UTC-08:00) Baja California","America\/Tijuana",false,"Pacific Standard Time","Pacific Daylight Time"],["(UTC-08:00) Pacific Time (US and Canada)","America\/Los_Angeles",true,"Pacific Standard Time","Pacific Daylight Time"],["(UTC-07:00) Arizona","America\/Phoenix",false,"Mountain Standard Time","Mountain Daylight Time"],["(UTC-07:00) Chihuahua, La Paz, Mazatlan","America\/Chihuahua",false,"Mountain Standard Time","Mountain Daylight Time"],["(UTC-07:00) Mountain Time (US and Canada)","America\/Denver",true,"Mountain Standard Time","Mountain Daylight Time"],["(UTC-06:00) Central America","America\/Belize",false,"Central Standard Time",null],["(UTC-06:00) Central Time (US and Canada)\t","America\/Chicago",true,"Central Standard Time","Central Daylight Time"],["(UTC-06:00) Easter Island","Pacific\/Easter",false,"Easter Island Standard Time","Easter Island Summer Time"],["(UTC-06:00) Guadalajara, Mexico City, Monterrey","America\/Mexico_City",false,"Central Standard Time","Central Daylight Time"],["(UTC-06:00) Saskatchewan","America\/Regina",true,"Central Standard Time","Central Daylight Time"],["(UTC-05:00) Bogota, Lima, Quito","America\/Bogota",false,"South America Pacific Standard Time",null],["(UTC-05:00) Chetumal","America\/Cancun",false,"Eastern Standard Time",null],["(UTC-05:00) Eastern Time (US and Canada)","America\/New_York",true,"Eastern Standard Time","Eastern Daylight Time"],["(UTC-05:00) Haiti","America\/Port-au-Prince",false,"Eastern Standard Time",null],["(UTC-05:00) Havana","America\/Havana",false,"Cuba Standard Time","Cuba Daylight Time"],["(UTC-05:00) Indiana (East)","America\/Indiana\/Indianapolis",false,"Eastern Standard Time","Eastern Daylight Time"],["(UTC-04:00) Asuncion","America\/Asuncion",false,"Paraguay Time","Paraguay Summer Time"],["(UTC-04:00) Atlantic Time (Canada)","America\/Halifax",false,"Atlantic Standard Time","Atlantic Daylight Time"],["(UTC-04:00) Caracas","America\/Caracas",false,"Venezuelan Standard Time",null],["(UTC-04:00) Cuiaba","America\/Cuiaba",false,"Amazon Time","Amazon Summer Time"],["(UTC-04:00) Georgetown, La Paz, Manaus, San Juan","America\/Manaus",true,"Atlantic Standard Time",null],["(UTC-04:00) Santiago","America\/Santiago",true,"Chile Standard Time","Chile Summer Time"],["(UTC-04:00) Turks and Caicos","America\/Grand_Turk",false,"Atlantic Standard Time",null],["(UTC-03:30) Newfoundland","America\/St_Johns",false,"Newfoundland Standard Time","Newfoundland Daylight Time"],["(UTC-03:00) Araguaina","America\/Fortaleza",false,"Brasilia Time",null],["(UTC-03:00) Brasilia","America\/Sao_Paulo",true,"Brasilia Time","Brasilia Summer Time"],["(UTC-03:00) Cayenne, Fortaleza","America\/Cayenne",false,"French Guiana Time",null],["(UTC-03:00) City of Buenos Aires","America\/Buenos_Aires",true,"Argentina Time",null],["(UTC-03:00) Greenland","America\/Godthab",false,"West Greenland Time","Western Greenland Summer Time"],["(UTC-03:00) Montevideo","America\/Montevideo",false,"Uruguay Time","Uruguay Summer Time"],["(UTC-03:00) Saint Pierre and Miquelon","America\/Miquelon",false,"Pierre & Miquelon Standard Time","Pierre & Miquelon Daylight Time"],["(UTC-03:00) Salvador","America\/Bahia",false,"Brasilia Time","Brasilia Summer Time"],["(UTC-02:00) Fernando de Noronha","America\/Noronha",true,"Fernando de Noronha Time",null],["(UTC-01:00) Azores","Atlantic\/Azores",false,"Azores Time","Azores Summer Time"],["(UTC-01:00) Cabo Verde Islands","Atlantic\/Cape_Verde",false,"Cape Verde Time",null],["(UTC) Casablanca","Africa\/Casablanca",false,"Western European Time","Western European Summer Time"],["(UTC) Dublin, Edinburgh, Lisbon, London","Europe\/London",false,"Greenwich Mean Time","British Summer Time"],["(UTC) Monrovia, Reykjavik","Africa\/Monrovia",false,"Greenwich Mean Time",null],["(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna","Europe\/Amsterdam",true,"Central European Time","Central European Summer Time"],["(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague","Europe\/Belgrade",false,"Central European Time","Central European Summer Time"],["(UTC+01:00) Brussels, Copenhagen, Madrid, Paris","Europe\/Brussels",false,"Central European Time","Central European Summer Time"],["(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb","Europe\/Warsaw",false,"Central European Time","Central European Summer Time"],["(UTC+01:00) West Central Africa","Africa\/Algiers",false,"Central European Time",null],["(UTC+01:00) Windhoek","Africa\/Windhoek",false,"West Africa Time","West Africa Summer Time"],["(UTC+02:00) Amman","Asia\/Amman",false,"Arabia Standard Time","Arabia Standard Time"],["(UTC+02:00) Athens, Bucharest","Europe\/Athens",false,"Eastern European Time","Eastern European Summer Time"],["(UTC+02:00) Beirut","Asia\/Beirut",false,"Eastern European Time","Eastern European Summer Time"],["(UTC+02:00) Cairo","Africa\/Cairo",false,"Eastern European Time","Eastern European Summer Time"],["(UTC+02:00) Damascus","Asia\/Damascus",false,"Eastern European Time","Eastern European Summer Time"],["(UTC+02:00) Gaza, Hebron","Asia\/Gaza",false,"Eastern European Time","Eastern European Summer Time"],["(UTC+02:00) Harare, Pretoria","Africa\/Harare",false,"Central Africa Time",null],["(UTC+02:00) Helsinki, Kiev, Riga, Sofia, Tallinn, Vilnius","Europe\/Helsinki",false,"Eastern European Time","Eastern European Summer Time"],["(UTC+02:00) Jerusalem","Asia\/Jerusalem",false,"Israel Standard Time","Israel Daylight Time"],["(UTC+02:00) Kaliningrad","Europe\/Kaliningrad",false,"Eastern European Time",null],["(UTC+02:00) Tripoli","Africa\/Tripoli",false,"Eastern European Time",null],["(UTC+03:00) Baghdad","Asia\/Baghdad",false,"Arabia Standard Time",null],["(UTC+03:00) Istanbul","Asia\/Istanbul",false,"Turkey Time",null],["(UTC+03:00) Kuwait, Riyadh","Asia\/Kuwait",true,"Arabia Standard Time",null],["(UTC+03:00) Minsk","Europe\/Minsk",false,"Further-eastern European Time",null],["(UTC+03:00) Moscow, St. Petersburg, Volgograd","Europe\/Moscow",true,"Moscow Time",null],["(UTC+03:00) Nairobi","Africa\/Nairobi",false,"East Africa Time",null],["(UTC+03:30) Tehran","Asia\/Tehran",false,"Iran Standard Time","Iran Daylight Time"],["(UTC+04:00) Abu Dhabi, Muscat","Asia\/Muscat",true,"Gulf Standard Time",null],["(UTC+04:00) Astrakhan, Ulyanovsk","Europe\/Astrakhan",false,"Moscow Standard Time","Moscow Standard Time +1"],["(UTC+04:00) Baku","Asia\/Baku",true,"Azerbaijan Time","Azerbaijan Summer Time"],["(UTC+04:00) Izhevsk, Samara","Europe\/Samara",false,"Samara Time",null],["(UTC+04:00) Port Louis","Indian\/Mauritius",false,"Mauritius Time",null],["(UTC+04:00) Tbilisi","Asia\/Tbilisi",false,"Georgia Standard Time",null],["(UTC+04:00) Yerevan","Asia\/Yerevan",false,"Armenia Time","Armenia Summer Time"],["(UTC+04:30) Kabul","Asia\/Kabul",false,"Afghanistan Time",null],["(UTC+05:00) Tashkent, Ashgabat","Asia\/Tashkent",true,"Uzbekistan Time",null],["(UTC+05:00) Ekaterinburg","Asia\/Yekaterinburg",false,"Yekaterinburg Time",null],["(UTC+05:00) Islamabad, Karachi","Asia\/Karachi",false,"Pakistan Standard Time",null],["(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi","Asia\/Kolkata",false,"India Standard Time",null],["(UTC+05:30) Sri Jayawardenepura","Asia\/Colombo",false,"ISri Lanka Standard Time",null],["(UTC+05:45) Kathmandu","Asia\/Katmandu",false,"Nepal Time",null],["(UTC+06:00) Astana","Asia\/Almaty",false,"Alma-Ata Time",null],["(UTC+06:00) Dhaka","Asia\/Dhaka",true,"Bangladesh Standard Time",null],["(UTC+06:00) Novosibirsk","Asia\/Novosibirsk",false,"Novosibirsk Time",null],["(UTC+06:30) Yangon (Rangoon)","Asia\/Rangoon",false,"Myanmar Time",null],["(UTC+07:00) Bangkok, Hanoi, Jakarta","Asia\/Bangkok",false,"Indochina Time",null],["(UTC+07:00) Barnaul, Gorno-Altaysk","Asia\/Barnaul",false,"Moscow Standard Time +4",null],["(UTC+07:00) Hovd","Asia\/Hovd",false,"Hovd Time","Hovd Summer Time"],["(UTC+07:00) Krasnoyarsk","Asia\/Krasnoyarsk",false,"Krasnoyarsk Time",null],["(UTC+07:00) Tomsk","Asia\/Tomsk",false,"Moscow Standard Time +4",null],["(UTC+08:00) Beijing, Chongqing, Hong Kong SAR, Urumqi","Asia\/Chongqing",true,"China Standard Time",null],["(UTC+08:00) Irkutsk","Asia\/Irkutsk",false,"Irkutsk Time",null],["(UTC+08:00) Kuala Lumpur, Singapore","Asia\/Kuala_Lumpur",false,"Singapore Standard Time",null],["(UTC+08:00) Perth","Australia\/Perth",false,"Australian Western Standard Time",null],["(UTC+08:00) Taipei","Asia\/Taipei",false,"Taiwan Standard Time",null],["(UTC+08:00) Ulaanbaatar","Asia\/Ulaanbaatar",true,"Ulaanbaatar Time",null],["(UTC+08:30) Pyongyang","Asia\/Pyongyang",false,"Pyongyang Time",null],["(UTC+08:45) Eucla","Australia\/Eucla",false,"Australian Central Western Standard Time",null],["(UTC+09:00) Chita","Asia\/Chita",false,"Yakutsk Time",null],["(UTC+09:00) Osaka, Sapporo, Tokyo","Asia\/Tokyo",true,"Japan Standard Time",null],["(UTC+09:00) Seoul","Asia\/Seoul",false,"Korea Standard Time",null],["(UTC+09:00) Yakutsk","Asia\/Yakutsk",false,"Yakutsk Time",null],["(UTC+09:30) Adelaide","Australia\/Adelaide",false,"Australian Central Standard Time","Australian Central Daylight Time"],["(UTC+09:30) Darwin","Australia\/Darwin",false,"Australian Central Standard Time","Australian Central Daylight Time"],["(UTC+10:00) Brisbane","Australia\/Brisbane",true,"Australian Eastern Standard Time","Australian Eastern Daylight Time"],["(UTC+10:00) Canberra, Melbourne, Sydney","Australia\/Canberra",true,"Australian Eastern Standard Time","Australian Eastern Daylight Time"],["(UTC+10:00) Guam, Port Moresby","Pacific\/Guam",false,"West Pacific Standard Time",null],["(UTC+10:00) Hobart","Australia\/Hobart",false,"Australian Eastern Standard Time","Australian Eastern Daylight Time"],["(UTC+10:00) Vladivostok","Asia\/Vladivostok",false,"Vladivostok Time",null],["(UTC+10:30) Lord Howe Island","Australia\/Lord_Howe",false,"Lord Howe Standard Time","Lord Howe Daylight Time"],["(UTC+11:00) Bougainville Island","Pacific\/Bougainville",false,"Bougainville Standard Time",null],["(UTC+11:00) Chokirdakh","Asia\/Srednekolymsk",false,"Srednekolymsk Time",null],["(UTC+11:00) Magadan","Asia\/Magadan",false,"Magadan Time",null],["(UTC+11:00) Norfolk Island","Pacific\/Norfolk",false,"Norfolk Time",null],["(UTC+11:00) Sakhalin","Asia\/Sakhalin",false,"Sakhalin Time",null],["(UTC+11:00) Solomon Islands, New Caledonia","Pacific\/Guadalcanal",false,"Central Pacific Standard Time",null],["(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky","Asia\/Anadyr",false,"Kamchatka Time",null],["(UTC+12:00) Auckland, Wellington","Pacific\/Auckland",false,"New Zealand Standard Time","New Zealand Daylight Time"],["(UTC+12:00) Fiji Islands","Pacific\/Fiji",false,"Fiji Time","Fiji Summer Time"],["(UTC+12:45) Chatham Islands","Pacific\/Chatham",false,"Chatham Island Standard Time","Chatham Island Daylight Time"],["(UTC+13:00) Nuku'alofa","Pacific\/Tongatapu",false,"Tonga Standard Time",null],["(UTC+13:00) Samoa","Pacific\/Apia",false,"West Samoa Time",null],["(UTC+14:00) Kiritimati Island","Pacific\/Kiritimati",false,"Line Islands Time",null]],
+				default_tz: "America\/Los_Angeles",
+				dst_offsets: {"Pacific\/Midway":{"tz_offset":-39600},"America\/Adak":{"tz_offset":-32400},"Pacific\/Honolulu":{"tz_offset":-36000},"Pacific\/Marquesas":{"tz_offset":-34200},"America\/Anchorage":{"tz_offset":-28800},"America\/Tijuana":{"tz_offset":-25200},"America\/Los_Angeles":{"tz_offset":-25200},"America\/Phoenix":{"tz_offset":-25200},"America\/Chihuahua":{"tz_offset":-21600},"America\/Denver":{"tz_offset":-21600},"America\/Belize":{"tz_offset":-21600},"America\/Chicago":{"tz_offset":-18000},"Pacific\/Easter":{"tz_offset":-21600},"America\/Mexico_City":{"tz_offset":-18000},"America\/Regina":{"tz_offset":-21600},"America\/Bogota":{"tz_offset":-18000},"America\/Cancun":{"tz_offset":-18000},"America\/New_York":{"tz_offset":-14400},"America\/Port-au-Prince":{"tz_offset":-18000},"America\/Havana":{"tz_offset":-14400},"America\/Indiana\/Indianapolis":{"tz_offset":-14400},"America\/Asuncion":{"tz_offset":-14400},"America\/Halifax":{"tz_offset":-10800},"America\/Caracas":{"tz_offset":-14400},"America\/Cuiaba":{"tz_offset":-14400},"America\/Manaus":{"tz_offset":-14400},"America\/Santiago":{"tz_offset":-14400},"America\/Grand_Turk":{"tz_offset":-14400},"America\/St_Johns":{"tz_offset":-9000},"America\/Fortaleza":{"tz_offset":-10800},"America\/Sao_Paulo":{"tz_offset":-10800},"America\/Cayenne":{"tz_offset":-10800},"America\/Buenos_Aires":{"tz_offset":-10800},"America\/Godthab":{"tz_offset":-7200},"America\/Montevideo":{"tz_offset":-10800},"America\/Miquelon":{"tz_offset":-7200},"America\/Bahia":{"tz_offset":-10800},"America\/Noronha":{"tz_offset":-7200},"Atlantic\/Azores":{"tz_offset":0},"Atlantic\/Cape_Verde":{"tz_offset":-3600},"Africa\/Casablanca":{"tz_offset":3600},"Europe\/London":{"tz_offset":3600},"Africa\/Monrovia":{"tz_offset":0},"Europe\/Amsterdam":{"tz_offset":7200},"Europe\/Belgrade":{"tz_offset":7200},"Europe\/Brussels":{"tz_offset":7200},"Europe\/Warsaw":{"tz_offset":7200},"Africa\/Algiers":{"tz_offset":3600},"Africa\/Windhoek":{"tz_offset":3600},"Asia\/Amman":{"tz_offset":10800},"Europe\/Athens":{"tz_offset":10800},"Asia\/Beirut":{"tz_offset":10800},"Africa\/Cairo":{"tz_offset":7200},"Asia\/Damascus":{"tz_offset":10800},"Asia\/Gaza":{"tz_offset":10800},"Africa\/Harare":{"tz_offset":7200},"Europe\/Helsinki":{"tz_offset":10800},"Asia\/Jerusalem":{"tz_offset":10800},"Europe\/Kaliningrad":{"tz_offset":7200},"Africa\/Tripoli":{"tz_offset":7200},"Asia\/Baghdad":{"tz_offset":10800},"Asia\/Istanbul":{"tz_offset":10800},"Asia\/Kuwait":{"tz_offset":10800},"Europe\/Minsk":{"tz_offset":10800},"Europe\/Moscow":{"tz_offset":10800},"Africa\/Nairobi":{"tz_offset":10800},"Asia\/Tehran":{"tz_offset":16200},"Asia\/Muscat":{"tz_offset":14400},"Europe\/Astrakhan":{"tz_offset":14400},"Asia\/Baku":{"tz_offset":14400},"Europe\/Samara":{"tz_offset":14400},"Indian\/Mauritius":{"tz_offset":14400},"Asia\/Tbilisi":{"tz_offset":14400},"Asia\/Yerevan":{"tz_offset":14400},"Asia\/Kabul":{"tz_offset":16200},"Asia\/Tashkent":{"tz_offset":18000},"Asia\/Yekaterinburg":{"tz_offset":18000},"Asia\/Karachi":{"tz_offset":18000},"Asia\/Kolkata":{"tz_offset":19800},"Asia\/Colombo":{"tz_offset":19800},"Asia\/Katmandu":{"tz_offset":20700},"Asia\/Almaty":{"tz_offset":21600},"Asia\/Dhaka":{"tz_offset":21600},"Asia\/Novosibirsk":{"tz_offset":25200},"Asia\/Rangoon":{"tz_offset":23400},"Asia\/Bangkok":{"tz_offset":25200},"Asia\/Barnaul":{"tz_offset":25200},"Asia\/Hovd":{"tz_offset":28800},"Asia\/Krasnoyarsk":{"tz_offset":25200},"Asia\/Tomsk":{"tz_offset":25200},"Asia\/Chongqing":{"tz_offset":28800},"Asia\/Irkutsk":{"tz_offset":28800},"Asia\/Kuala_Lumpur":{"tz_offset":28800},"Australia\/Perth":{"tz_offset":28800},"Asia\/Taipei":{"tz_offset":28800},"Asia\/Ulaanbaatar":{"tz_offset":32400},"Asia\/Pyongyang":{"tz_offset":30600},"Australia\/Eucla":{"tz_offset":31500},"Asia\/Chita":{"tz_offset":32400},"Asia\/Tokyo":{"tz_offset":32400},"Asia\/Seoul":{"tz_offset":32400},"Asia\/Yakutsk":{"tz_offset":32400},"Australia\/Adelaide":{"tz_offset":34200},"Australia\/Darwin":{"tz_offset":34200},"Australia\/Brisbane":{"tz_offset":36000},"Australia\/Canberra":{"tz_offset":36000},"Pacific\/Guam":{"tz_offset":36000},"Australia\/Hobart":{"tz_offset":36000},"Asia\/Vladivostok":{"tz_offset":36000},"Australia\/Lord_Howe":{"tz_offset":37800},"Pacific\/Bougainville":{"tz_offset":39600},"Asia\/Srednekolymsk":{"tz_offset":39600},"Asia\/Magadan":{"tz_offset":39600},"Pacific\/Norfolk":{"tz_offset":39600},"Asia\/Sakhalin":{"tz_offset":39600},"Pacific\/Guadalcanal":{"tz_offset":39600},"Asia\/Anadyr":{"tz_offset":43200},"Pacific\/Auckland":{"tz_offset":43200},"Pacific\/Fiji":{"tz_offset":43200},"Pacific\/Chatham":{"tz_offset":45900},"Pacific\/Tongatapu":{"tz_offset":46800},"Pacific\/Apia":{"tz_offset":46800},"Pacific\/Kiritimati":{"tz_offset":50400},"ttl_seconds":524821,"expiration_timestamp":1495332000},
+				
+		feature_tinyspeck: false,
+		feature_create_team_google_auth: false,
+		feature_flannel_fe: false,
+		feature_no_placeholders_in_messages: false,
+		feature_webapp_always_collect_initial_time_period_stats: false,
+		feature_lazy_load_members_and_bots_everywhere: false,
+		feature_flannel_use_canary_sometimes: false,
+		feature_store_models_in_redux: false,
+		feature_drew_broke_his_own_app: false,
+		feature_new_broadcast: true,
+		feature_new_threads_view: true,
+		feature_message_replies: true,
+		feature_page_replies_methods: true,
+		feature_message_replies_inline: false,
+		feature_threads_paging_flexpane: true,
+		feature_threads_slash_cmds: true,
+		feature_subteam_members_diff: false,
+		feature_a11y_keyboard_shortcuts: false,
+		feature_email_ingestion: false,
+		feature_msg_consistency: false,
+		feature_sli_channel_priority: false,
+		feature_react_sidebar: false,
+		feature_thanks: false,
+		feature_attachments_inline: false,
+		feature_fix_files: true,
+		feature_channel_eventlog_client: true,
+		feature_paging_api: false,
+		feature_enterprise_frecency: false,
+		feature_enterprise_move_channels: true,
+		feature_i18n_currencies: true,
+		feature_i18n_bank_settlement: false,
+		feature_i18n_checkout_updates: true,
+		feature_dunning: true,
+		feature_basic_analytics: false,
+		feature_team_site_basic_analytics: false,
+		feature_basic_analytics_overview_graphs: false,
+		feature_refactor_admin_stats: false,
+		feature_enterprise_profile_menu_deactivate_2fa: false,
+		feature_sso_sandbox: true,
+		feature_sso_expose_signed_elements: true,
+		feature_js_raf_queue: false,
+		feature_channel_alert_words: false,
+		feature_shared_channels: false,
+		feature_shared_channels_beta: false,
+		feature_shared_channels_client: false,
+		feature_shared_chan_unify_user: false,
+		feature_shared_channels_invite: false,
+		feature_allow_shared_general: false,
+		feature_winssb_beta_channel: false,
+		feature_presence_sub: true,
+		feature_live_support_free_plan: false,
+		feature_slackbot_goes_to_college: false,
+		feature_newxp_enqueue_message: true,
+		feature_lato_2_ssb: true,
+		feature_focus_mode: false,
+		feature_star_shortcut: false,
+		feature_show_jumper_scores: true,
+		feature_omit_localstorage_users_bots: false,
+		feature_disable_ls_compression: false,
+		feature_force_ls_compression: false,
+		feature_zendesk_app_submission_improvement: false,
+		feature_app_cards_profiles_shared_channels: false,
+		feature_ignore_code_mentions: false,
+		feature_name_tagging_client: false,
+		feature_name_tagging_client_autocomplete: false,
+		feature_use_imgproxy_resizing: false,
+		feature_auth_unfurls: true,
+		feature_localization: false,
+		feature_share_mention_comment_cleanup: false,
+		feature_external_files: false,
+		feature_min_web: true,
+		feature_electron_memory_logging: false,
+		feature_wait_for_all_mentions_in_client: false,
+		feature_prev_next_button: false,
+		feature_free_inactive_domains: true,
+		feature_keyboard_navigation: false,
+		feature_measure_css_usage: false,
+		feature_es6_build_pipeline: false,
+		feature_take_profile_photo: false,
+		feature_arugula: false,
+		feature_texty: true,
+		feature_texty_takes_over: true,
+		feature_texty_browser_substitutions: false,
+		feature_texty_rewrite_on_paste: false,
+		feature_texty_search: false,
+		feature_texty_mentions: false,
+		feature_toggle_id_translation: false,
+		feature_emoji_menu_tuning: false,
+		feature_default_shared_channels: false,
+		feature_workspace_request: false,
+		feature_enable_mdm: false,
+		feature_message_menus: true,
+		feature_sli_recaps: true,
+		feature_sli_recaps_interface: true,
+		feature_new_message_click_logging: true,
+		feature_user_custom_status: true,
+		feature_hide_join_leave: false,
+		feature_slim_scrollbar: false,
+		feature_ent_dash_new_modal: false,
+		feature_i18n_emoji: false,
+		feature_intl_channel_names: true,
+		feature_sli_highlight_unreads: false,
+		feature_sli_briefing: false,
+		feature_searcher_completions: true,
+		feature_platform_disable_rtm: true,
+		feature_gsuite_rich_previews: false,
+		feature_enterprise_guest_conversion: true,
+		feature_scrollback_half_measures: true,
+		feature_client_resize_optimizations: false,
+		feature_dedupe_files_info_requests: true,
+		feature_notif_prefs_overhaul: false,
+		feature_dnd_on_demand: true,
+		feature_enterprise_loading_state: false,
+		feature_api_admin_page: true,
+		feature_api_admin_page_not_ent: false,
+		feature_delay_channel_history_fetch: true,
+		feature_app_permissions_api_site: false,
+		feature_app_index: false,
+		feature_deprecate_archives_for_admin_channels: false,
+		feature_deleted_dm_archives: true,
+		feature_archive_deeplink: false,
+		feature_dm_retention: false,
+		feature_untangle_app_directory_templates: false,
+		feature_no_pong_timeout: true,
+		feature_scim_profile_fields: false,
+		feature_ms_msg_handlers_profiling: true,
+		feature_unknown_members: false,
+		feature_ms_latest: false,
+		feature_one_rebuild_per_animation_frame: false,
+		feature_disable_history_prefetch: false,
+		feature_async_queue: false,
+		feature_app_space: false,
+		feature_queue_metrics: false,
+		feature_posts_lite: false,
+
+	client_logs: {"0":{"numbers":[0],"user_facing":false},"@scott":{"numbers":[2,4,37,58,67,141,142,389,390,481,488,529,667,773,808,888,999],"owner":"@scott"},"@eric":{"numbers":[2,23,47,48,65,66,72,73,82,91,93,96,222,365,438,528,552,777,794],"owner":"@eric"},"2":{"owner":"@scott \/ @eric","numbers":[2],"user_facing":false},"4":{"owner":"@scott","numbers":[4],"user_facing":false},"5":{"channels":"#dhtml","numbers":[5],"user_facing":false},"23":{"owner":"@eric","numbers":[23],"user_facing":false},"sounds":{"owner":"@scott","name":"sounds","numbers":[37]},"37":{"owner":"@scott","name":"sounds","numbers":[37],"user_facing":true},"47":{"owner":"@eric","numbers":[47],"user_facing":false},"48":{"owner":"@eric","numbers":[48],"user_facing":false},"Message History":{"owner":"@scott","name":"Message History","numbers":[58]},"58":{"owner":"@scott","name":"Message History","numbers":[58],"user_facing":true},"65":{"owner":"@eric","numbers":[65],"user_facing":false},"66":{"owner":"@eric","numbers":[66],"user_facing":false},"67":{"owner":"@scott","numbers":[67],"user_facing":false},"72":{"owner":"@eric","numbers":[72],"user_facing":false},"73":{"owner":"@eric","numbers":[73],"user_facing":false},"82":{"owner":"@eric","numbers":[82],"user_facing":false},"@shinypb":{"owner":"@shinypb","numbers":[88,1000,1989,1990,1991,1996]},"88":{"owner":"@shinypb","numbers":[88],"user_facing":false},"91":{"owner":"@eric","numbers":[91],"user_facing":false},"93":{"owner":"@eric","numbers":[93],"user_facing":false},"96":{"owner":"@eric","numbers":[96],"user_facing":false},"@steveb":{"owner":"@steveb","numbers":[99]},"99":{"owner":"@steveb","numbers":[99],"user_facing":false},"Channel Marking (MS)":{"owner":"@scott","name":"Channel Marking (MS)","numbers":[141]},"141":{"owner":"@scott","name":"Channel Marking (MS)","numbers":[141],"user_facing":true},"Channel Marking (Client)":{"owner":"@scott","name":"Channel Marking (Client)","numbers":[142]},"142":{"owner":"@scott","name":"Channel Marking (Client)","numbers":[142],"user_facing":true},"222":{"owner":"@eric","numbers":[222],"user_facing":false},"365":{"owner":"@eric","numbers":[365],"user_facing":false},"389":{"owner":"@scott","numbers":[389],"user_facing":false},"390":{"owner":"@scott","numbers":[390],"user_facing":false},"438":{"owner":"@eric","numbers":[438],"user_facing":false},"@rowan":{"numbers":[444,666],"owner":"@rowan"},"444":{"owner":"@rowan","numbers":[444],"user_facing":false},"481":{"owner":"@scott","numbers":[481],"user_facing":false},"488":{"owner":"@scott","numbers":[488],"user_facing":false},"528":{"owner":"@eric","numbers":[528],"user_facing":false},"529":{"owner":"@scott","numbers":[529],"user_facing":false},"552":{"owner":"@eric","numbers":[552],"user_facing":false},"dashboard":{"owner":"@ac \/ @bruce \/ @kylestetz \/ @nic \/ @rowan","channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666]},"@ac":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@ac"},"@bruce":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@bruce"},"@kylestetz":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@kylestetz"},"@nic":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@nic"},"666":{"owner":"@ac \/ @bruce \/ @kylestetz \/ @nic \/ @rowan","channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"user_facing":false},"667":{"owner":"@scott","numbers":[667],"user_facing":false},"773":{"owner":"@scott","numbers":[773],"user_facing":false},"777":{"owner":"@eric","numbers":[777],"user_facing":false},"794":{"owner":"@eric","numbers":[794],"user_facing":false},"Client Responsiveness":{"owner":"@scott","name":"Client Responsiveness","user_facing":false,"numbers":[808]},"808":{"owner":"@scott","name":"Client Responsiveness","user_facing":false,"numbers":[808]},"Message Pane Scrolling":{"owner":"@scott","name":"Message Pane Scrolling","numbers":[888]},"888":{"owner":"@scott","name":"Message Pane Scrolling","numbers":[888],"user_facing":true},"999":{"owner":"@scott","numbers":[999],"user_facing":false},"1000":{"owner":"@shinypb","numbers":[1000],"user_facing":false},"Members":{"owner":"@fearon","name":"Members","numbers":[1975]},"@fearon":{"owner":"@fearon","name":"Members","numbers":[1975,98765]},"1975":{"owner":"@fearon","name":"Members","numbers":[1975],"user_facing":true},"lazy loading":{"owner":"@shinypb","channels":"#devel-flannel","name":"lazy loading","numbers":[1989]},"1989":{"owner":"@shinypb","channels":"#devel-flannel","name":"lazy loading","numbers":[1989],"user_facing":true},"thin_channel_membership":{"owner":"@shinypb","channels":"#devel-infrastructure","name":"thin_channel_membership","numbers":[1990]},"1990":{"owner":"@shinypb","channels":"#devel-infrastructure","name":"thin_channel_membership","numbers":[1990],"user_facing":true},"stats":{"owner":"@shinypb","channels":"#team-infrastructure","name":"stats","numbers":[1991]},"1991":{"owner":"@shinypb","channels":"#team-infrastructure","name":"stats","numbers":[1991],"user_facing":true},"ms":{"owner":"@shinypb","name":"ms","numbers":[1996]},"1996":{"owner":"@shinypb","name":"ms","numbers":[1996],"user_facing":true},"shared_channels_connection":{"owner":"@jim","name":"shared_channels_connection","numbers":[1999]},"@jim":{"owner":"@jim","name":"shared_channels_connection","numbers":[1999]},"1999":{"owner":"@jim","name":"shared_channels_connection","numbers":[1999],"user_facing":false},"@patrick":{"owner":"@patrick","channels":"#dhtml","numbers":[2001,2002,2003,2004]},"2001":{"owner":"@patrick","channels":"#dhtml","numbers":[2001],"user_facing":false},"dnd":{"owner":"@patrick","channels":"dhtml","name":"dnd","numbers":[2002]},"2002":{"owner":"@patrick","channels":"dhtml","name":"dnd","numbers":[2002],"user_facing":true},"2003":{"owner":"@patrick","channels":"dhtml","numbers":[2003],"user_facing":false},"Threads":{"owner":"@patrick","channels":"#feat-threads, #devel-threads","name":"Threads","numbers":[2004]},"2004":{"owner":"@patrick","channels":"#feat-threads, #devel-threads","name":"Threads","numbers":[2004],"user_facing":true},"mc_sibs":{"name":"mc_sibs","numbers":[9999]},"9999":{"name":"mc_sibs","numbers":[9999],"user_facing":false},"98765":{"owner":"@fearon","numbers":[98765],"user_facing":false},"@ainjii":{"owner":"@ainjii","numbers":[8675309]},"8675309":{"owner":"@ainjii","numbers":[8675309],"user_facing":false}},
+
+
+		img: {
+			app_icon: 'https://fst.slack-edge.com/272a/img/slack_growl_icon.png'
+		},
+		page_needs_custom_emoji: false,
+		page_needs_team_profile_fields: false,
+		page_needs_enterprise: false	};
+
+	
+	
+	
+	
+	
+	
+	// i18n locale map (eg: maps Slack `ja-jp` to ZD `ja`)
+			boot_data.slack_to_zd_locale = {"en-us":"en-us","fr-fr":"fr-fr","de-de":"de","es-es":"es","ja-jp":"ja"};
+	
+	// client boot data
+	
+			
+	
+	
+//-->
+</script>	
+	
+
+	
+
+
+	<!-- output_js "core" -->
+<script type="text/javascript" src="ericd139%20_%20rcbmarch2017%20Slack_files/rollup-core_required_libs.js" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="ericd139%20_%20rcbmarch2017%20Slack_files/rollup-core_required_ts.js" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="ericd139%20_%20rcbmarch2017%20Slack_files/TS.js" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)"></script>
+
+	<!-- output_js "core_web" -->
+<script type="text/javascript" src="ericd139%20_%20rcbmarch2017%20Slack_files/rollup-core_web.js" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)"></script>
+
+	<!-- output_js "secondary" -->
+<script type="text/javascript" src="ericd139%20_%20rcbmarch2017%20Slack_files/rollup-secondary_a_required.js" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="ericd139%20_%20rcbmarch2017%20Slack_files/rollup-secondary_b_required.js" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)"></script>
+
+			
+	
+	<!-- output_js "regular" -->
+<script type="text/javascript" src="ericd139%20_%20rcbmarch2017%20Slack_files/TS_002.js" crossorigin="anonymous" onload="window._cdn &amp;&amp; _cdn.ok(this, arguments)" onerror="window._cdn &amp;&amp; _cdn.failed(this, arguments)"></script>
+
+
+		<script type="text/javascript">
+				TS.clog.setTeam('T4CHA656G');
+				TS.clog.setUser('U4GJG8BEG');
+			</script>
+
+		<script type="text/javascript">
+	<!--
+	$('#change_photo_link').tooltip();
+	boot_data.page_needs_custom_emoji = true;
+	boot_data.page_needs_team_profile_fields = true;
+	boot_data.page_needs_enterprise = false;
+	boot_data.page_needs_state = true;
+	boot_data.page_needs_all_ims = true; // I am not happy about this, but there is no way to fetch the im channel by user_id
+	boot_data.member_id = 'U4FNBE4HL';
+		boot_data.experiment_assignments = {"free_trial_email_subject":{"experiment_id":"57071396899","type":"team","group":"classic_subject","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"social_nudge_v0":{"experiment_id":"57452636336","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"video_calls":{"experiment_id":"57458324849","type":"team","group":"video_enabled_ss_disabled","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"free_trial_remind_email_subject":{"experiment_id":"57752860833","type":"team","group":"classic_subject","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"migrate_stats_to_cds":{"experiment_id":"70039090853","type":"team","group":"stats_cds","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"migrate_stats_enable_dark_reads":{"experiment_id":"70047028338","type":"team","group":"stats_mysql_and_cds_dark_reads","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"domain_signup_links_for_mobile":{"experiment_id":"70804845972","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"invite_team_directory_ios":{"experiment_id":"77275546387","type":"team","group":"add_button","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"update_invite_coachmarks_cta":{"experiment_id":"84280109270","type":"team","group":"invite_cm_got_ita","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"onboarding_tips_ios":{"experiment_id":"86784061120","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"new_user_invites_ios":{"experiment_id":"90602474723","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"channel_icon_tooltip_ios":{"experiment_id":"91223363988","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"google_contacts_invite_existing":{"experiment_id":"93086200404","type":"team","group":"google_contacts","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"google_contacts_invite_new":{"experiment_id":"93096027173","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"channel_card_ios":{"experiment_id":"100856215509","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"targetted_mpim_search":{"experiment_id":"120085429362","type":"team","group":"groups_members","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"google_contacts_ios":{"experiment_id":"125947833172","type":"team","group":"allow_google_contacts","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"email_autocomplete_android":{"experiment_id":"133221212662","type":"team","group":"enabled","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"flannel_paid_teams":{"experiment_id":"136739155603","type":"team","group":"flannel","trigger":"launch_team","log_exposures":false,"exposure_id":"148588209220"},"channel_list_invite_ios":{"experiment_id":"138309372336","type":"team","group":"show_invites","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"modal_3_fields":{"experiment_id":"140209149492","type":"team","group":"modal_3_fields","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"modal_3_fields_existing_teams":{"experiment_id":"142775007765","type":"team","group":"modal_3_fields","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"guest_profiles_and_expiration":{"experiment_id":"145034475616","type":"team","group":"treatment","trigger":"launch_team","log_exposures":false,"exposure_id":"148588209220"},"exp_thread_at_mention":{"experiment_id":"145686678499","type":"team","group":"autofill","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"email_team_joiners_notif":{"experiment_id":"146984588407","type":"team","group":"email_creators_about_joiners","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"msg_lim_viz":{"experiment_id":"147140178163","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"feat_channel_notif":{"experiment_id":"148884266224","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"exp_threads_everything_pref":{"experiment_id":"152393699186","type":"team","group":"default","trigger":"hash_team","log_exposures":true,"exposure_id":"148588209220"},"abort_invite_flow_alert":{"experiment_id":"152929069858","type":"team","group":"show_alert","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"lib_mentions_match":{"experiment_id":"153633324374","type":"team","group":"trie","trigger":"launch_team","log_exposures":false,"exposure_id":"148588209220"},"msg_lim_viz_2":{"experiment_id":"153780471636","type":"team","group":"msg_limit_top_original_copy","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"all_purpose_push_invite_people_2":{"experiment_id":"156404552928","type":"team","group":"treatment","trigger":"hash_team","log_exposures":true,"exposure_id":"148588209220"},"invite_reminder_timing":{"experiment_id":"157562975618","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":"148588209220"},"app_dir_channel_sidebar_cta":{"experiment_id":"159072431845","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"custom_status_callout":{"experiment_id":"160436800725","type":"team","group":"control","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"invite_btn_redesign_new_teams":{"experiment_id":"162127835024","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"invite_btn_redesign_old_teams":{"experiment_id":"162881011348","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"feat_channel_notif_v1":{"experiment_id":"163206976592","type":"team","group":"","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"rebuild_mention_map_double_write":{"experiment_id":"164525064375","type":"team","group":"yes","trigger":"launch_team","log_exposures":false,"exposure_id":"148588209220"},"tell_joiners_about_joiners":{"experiment_id":"164588156482","type":"team","group":"send_joiners_pushes","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"explicit_slackbot":{"experiment_id":"167294864052","type":"team","group":"treatment","trigger":"finished","log_exposures":false,"exposure_id":"148588209220"},"guest_expiration_announcement":{"experiment_id":"175209361220","type":"team","group":"whats_new","trigger":"launch_team","log_exposures":false,"exposure_id":"148588209220"},"feat_msg_lim_notfis_header":{"experiment_id":"177816173431","type":"team","group":"control","trigger":"hash_team","log_exposures":true,"exposure_id":"148588209220"}};
+	//-->
+</script>
+
+
+			<script type="text/javascript">TS.boot(boot_data);</script>
+	
+<style>.color_9f69e7:not(.nuc) {color:#9F69E7;}.color_4bbe2e:not(.nuc) {color:#4BBE2E;}.color_e7392d:not(.nuc) {color:#E7392D;}.color_3c989f:not(.nuc) {color:#3C989F;}.color_674b1b:not(.nuc) {color:#674B1B;}.color_e96699:not(.nuc) {color:#E96699;}.color_e0a729:not(.nuc) {color:#E0A729;}.color_684b6c:not(.nuc) {color:#684B6C;}.color_5b89d5:not(.nuc) {color:#5B89D5;}.color_2b6836:not(.nuc) {color:#2B6836;}.color_99a949:not(.nuc) {color:#99A949;}.color_df3dc0:not(.nuc) {color:#DF3DC0;}.color_4cc091:not(.nuc) {color:#4CC091;}.color_9b3b45:not(.nuc) {color:#9B3B45;}.color_d58247:not(.nuc) {color:#D58247;}.color_bb86b7:not(.nuc) {color:#BB86B7;}.color_5a4592:not(.nuc) {color:#5A4592;}.color_db3150:not(.nuc) {color:#DB3150;}.color_235e5b:not(.nuc) {color:#235E5B;}.color_9e3997:not(.nuc) {color:#9E3997;}.color_53b759:not(.nuc) {color:#53B759;}.color_c386df:not(.nuc) {color:#C386DF;}.color_385a86:not(.nuc) {color:#385A86;}.color_a63024:not(.nuc) {color:#A63024;}.color_5870dd:not(.nuc) {color:#5870DD;}.color_ea2977:not(.nuc) {color:#EA2977;}.color_50a0cf:not(.nuc) {color:#50A0CF;}.color_d55aef:not(.nuc) {color:#D55AEF;}.color_d1707d:not(.nuc) {color:#D1707D;}.color_43761b:not(.nuc) {color:#43761B;}.color_e06b56:not(.nuc) {color:#E06B56;}.color_8f4a2b:not(.nuc) {color:#8F4A2B;}.color_902d59:not(.nuc) {color:#902D59;}.color_de5f24:not(.nuc) {color:#DE5F24;}.color_a2a5dc:not(.nuc) {color:#A2A5DC;}.color_827327:not(.nuc) {color:#827327;}.color_3c8c69:not(.nuc) {color:#3C8C69;}.color_8d4b84:not(.nuc) {color:#8D4B84;}.color_84b22f:not(.nuc) {color:#84B22F;}.color_4ec0d6:not(.nuc) {color:#4EC0D6;}.color_e23f99:not(.nuc) {color:#E23F99;}.color_e475df:not(.nuc) {color:#E475DF;}.color_619a4f:not(.nuc) {color:#619A4F;}.color_a72f79:not(.nuc) {color:#A72F79;}.color_7d414c:not(.nuc) {color:#7D414C;}.color_aba727:not(.nuc) {color:#ABA727;}.color_965d1b:not(.nuc) {color:#965D1B;}.color_4d5e26:not(.nuc) {color:#4D5E26;}.color_dd8527:not(.nuc) {color:#DD8527;}.color_bd9336:not(.nuc) {color:#BD9336;}.color_e85d72:not(.nuc) {color:#E85D72;}.color_dc7dbb:not(.nuc) {color:#DC7DBB;}.color_bc3663:not(.nuc) {color:#BC3663;}.color_9d8eee:not(.nuc) {color:#9D8EEE;}.color_8469bc:not(.nuc) {color:#8469BC;}.color_73769d:not(.nuc) {color:#73769D;}.color_b14cbc:not(.nuc) {color:#B14CBC;}</style>
+
+<!-- slack-www-hhvm-054e2812d80687e74 / 2017-05-14 17:12:59 / v94e73317adc5ff6747b95b5857a30d44c7dc59ee / B:H -->
+
+
+
+<div id="aria_live_announcer" role="status"></div></body></html>

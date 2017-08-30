@@ -1,0 +1,170 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    /*background-color: grey;*/
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.logo {
+    position: relative;
+    bottom: 110px;  
+    height:70px;
+    left: 45%;
+    color: white;
+  
+}
+
+.grid-item1 {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  height: 30%;
+  width: 30%;
+}
+
+
+.intro {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    height: 1050px;
+    font-family: 'Abril Fatface', cursive;
+    font-family: 'Ultra', serif;
+    font-size: 60px;
+    position: relative;
+}
+
+.intro p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+    font-size: 4vw;
+}
+
+.introbutton {
+    position: relative;
+    top: 70%;
+    left: 50%;
+    height: 30%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+}
+
+.continuebutton {
+    position: relative;
+    top: 70%;
+    left: 25%;
+    height: 30%;
+    width: 50%;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.assessment {
+  position: relative;
+  top: -20px;
+}
+
+.grid {
+  height: 0px;
+}
+
+.page-footer {
+    height: 100%;
+}
+
+.z-depth-3 {
+    margin: 10px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 23px  
+
+}
+
+.top-nav {
+    height: 150px;
+}
+
+.nav-wrapper {
+    font-size: 50px;
+    margin: 0px;
+    height: 100px;
+    font-family: "Times New Roman", Times, serif;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    display: inline-block;
+    position: fixed;
+}
+
+.about {
+  position: relative;
+  left: 100%;
+  font-family: 'Ultra', serif;
+  font-size: 4vw;
+}
+
+.home {
+  position: relative;
+  left: 100%;
+  font-family: 'Ultra', serif;
+  font-size: 4vw;
+}
+
+#submit {
+ width:50%;
+ left: 30%
+}
+
+.resultsBloc {
+  font-size: 16px;
+}
+
+.glassdoorResults {
+  font-size: 20px;
+}
+
+.entryArea {
+  font-size: 20px;
+}

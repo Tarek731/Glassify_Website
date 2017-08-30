@@ -1,0 +1,173 @@
+@font-face{font-family:appleLogo;src:local("Lucida Grande");unicode-range:U+F8FF}
+#fs_modal.active~.pickmeup{z-index:1002}
+.edit_profile_drop_overlay{display:block;position:absolute;background:rgba(255,255,255,.7);width:100%;height:100vh;padding:15% 0;top:0;left:0;z-index:10}
+#edit_team_profile_container{height:100%}
+#edit_team_profile_container input:disabled,#edit_team_profile_container select:disabled{background:#fff;border:1px solid #C5C5C5}
+#edit_team_profile_container .lazy_filter_select.disabled,#edit_team_profile_container .lazy_filter_select.disabled input{background:#fff}
+#edit_team_profile_container .col:not(.btn){padding-right:0}
+#edit_team_profile_container label{cursor:default}
+#edit_team_profile_header{font-size:2.125rem;line-height:2.5625rem;font-weight:900}
+.center_and_narrow{text-align:center;padding:0 20%}
+#edit_team_profile_add .row,#edit_team_profile_list .row{border-bottom:1px solid transparent;border-top:1px solid #E8E8E8;padding:0 .75rem;font-weight:400;font-size:1rem;line-height:1.5rem;position:relative}
+#edit_team_profile_add .row.header_row,#edit_team_profile_list .row.header_row{font-weight:700}
+#edit_team_profile_add .row .col,#edit_team_profile_list .row .col{padding:.875rem 0}
+.touch #edit_team_profile_list i.ts_icon_grabby_patty{visibility:hidden;display:none}
+#edit_team_profile_list .row .col{font-size:.9375rem;line-height:1.3125rem}
+#edit_team_profile_list .row:not(.header_row) .col:first-child{font-weight:700}
+#edit_team_profile_list .row:not(.header_row) .col:last-child{text-align:right}
+#edit_team_profile_list .row.header_row{border-top-color:transparent}
+#edit_team_profile_list .row.header_row+.row{border-top-width:2px}
+#edit_team_profile_list .row:nth-last-child(2){border-bottom:none;cursor:default!important}
+#edit_team_profile_list .row:nth-last-child(2):active,#edit_team_profile_list .row:nth-last-child(2):hover{border-color:#E8E8E8!important;border-bottom:none!important}
+#edit_team_profile_list .row:nth-child(n+5){cursor:pointer;-webkit-transition:background .15s ease-out 0s;-moz-transition:background .15s ease-out 0s;transition:background .15s ease-out 0s}
+#edit_team_profile_list .row:nth-child(n+5).active,#edit_team_profile_list .row:nth-child(n+5):active,#edit_team_profile_list .row:nth-child(n+5):hover{background:#edf7fd;border:1px solid #d3ecfa;border-radius:.375rem;padding:0 .6875rem}
+#edit_team_profile_list .row:nth-child(n+5).active:not(.sortable-dragging)+.row,#edit_team_profile_list .row:nth-child(n+5):active:not(.sortable-dragging)+.row,#edit_team_profile_list .row:nth-child(n+5):hover:not(.sortable-dragging)+.row{border-top-color:transparent}
+#edit_team_profile_list .row:nth-child(n+5).active .edit_team_profile_list_controls,#edit_team_profile_list .row:nth-child(n+5):active .edit_team_profile_list_controls,#edit_team_profile_list .row:nth-child(n+5):hover .edit_team_profile_list_controls{right:.6875rem}
+#edit_team_profile_list .row:nth-child(n+5).active .edit_team_profile_list_controls i.ts_icon_cog_o{color:#555459}
+#edit_team_profile_list .row:nth-child(n+5) .col>p{text-overflow:ellipsis;overflow:hidden}
+#edit_team_profile_list .default_row+.hidden_row,#edit_team_profile_list .sortable-placeholder+.hidden_row,#edit_team_profile_list .visible_row+.hidden_row{border-top-width:2px}
+#edit_team_profile_list .default_row+.hidden_row.active,#edit_team_profile_list .default_row+.hidden_row:active,#edit_team_profile_list .default_row+.hidden_row:hover,#edit_team_profile_list .sortable-placeholder+.hidden_row.active,#edit_team_profile_list .sortable-placeholder+.hidden_row:active,#edit_team_profile_list .sortable-placeholder+.hidden_row:hover,#edit_team_profile_list .visible_row+.hidden_row.active,#edit_team_profile_list .visible_row+.hidden_row:active,#edit_team_profile_list .visible_row+.hidden_row:hover{border-top-width:1px;margin-top:1px}
+#edit_team_profile_list .edit_team_profile_list_controls{position:absolute;right:.75rem;top:50%;height:1.75rem;-webkit-transform:translateY(-.875rem);-moz-transform:translateY(-.875rem);-ms-transform:translateY(-.875rem);transform:translateY(-.875rem)}
+#edit_team_profile_list .edit_team_profile_list_controls i{color:#BABBBF;-webkit-transition:color .15s ease-out 0s;-moz-transition:color .15s ease-out 0s;transition:color .15s ease-out 0s}
+#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_cog_o:before{position:relative;top:.125rem}
+#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_cog_o:active,#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_cog_o:hover{color:#555459}
+#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_cog_o+i.ts_icon_grabby_patty{display:inline}
+#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_grabby_patty{margin-left:.4375rem;display:none;cursor:-webkit-grab;cursor:-mox-grab;cursor:grab}
+#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_grabby_patty:before{position:relative;top:.1875rem}
+#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_grabby_patty:active,#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_grabby_patty:hover{color:#005E99}
+#edit_team_profile_list .edit_team_profile_list_controls i.ts_icon_grabby_patty:active{cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}
+#edit_team_profile_list .sortable-placeholder{*zoom:1}
+#edit_team_profile_list .sortable-placeholder:before{border-top:1px solid #E8E8E8;width:100%}
+#edit_team_profile_list .sortable-placeholder:after,#edit_team_profile_list .sortable-placeholder:before{display:table;line-height:0;content:""}
+#edit_team_profile_list .sortable-placeholder:after{clear:both}
+#edit_team_profile_list .profile_field__icon--scim_provisioned:before{position:relative;top:3px}
+#edit_team_profile_add .row .col{font-size:.9375rem;line-height:1.3125rem}
+#edit_team_profile_add .row:first-child{border-top-color:transparent}
+#edit_team_profile_add .row:last-child{border-bottom:1px solid #E8E8E8;margin-bottom:1rem}
+#edit_team_profile_add .row:not(.header_row){cursor:pointer;-webkit-transition:background .15s ease-out 0s;-moz-transition:background .15s ease-out 0s;transition:background .15s ease-out 0s}
+#edit_team_profile_add .row:not(.header_row):active,#edit_team_profile_add .row:not(.header_row):hover{background:#edf7fd;border:1px solid #d3ecfa;padding:0 .6875rem;border-radius:.375rem}
+#edit_team_profile_add .row:not(.header_row):active+.row,#edit_team_profile_add .row:not(.header_row):hover+.row{border-top-color:transparent}
+#edit_team_profile_add .row:not(.header_row):active .col:first-child,#edit_team_profile_add .row:not(.header_row):hover .col:first-child{color:#005E99}
+#edit_team_profile_add .row:not(.header_row):active i,#edit_team_profile_add .row:not(.header_row):hover i{color:#005E99;border-color:#005E99;right:.6875rem}
+#edit_team_profile_add .row .col:first-child{font-weight:700}
+#edit_team_profile_add i{color:#BABBBF;position:absolute;right:.75rem;top:.75rem}
+#edit_team_profile_edit .profile_field_preview_protector+p{visibility:hidden}
+#edit_team_profile_edit .profile_field_preview_protector:active+p,#edit_team_profile_edit .profile_field_preview_protector:hover+p{visibility:visible}
+#edit_team_profile_edit .profile_field_preview_protector label{display:inline-block}
+#edit_team_profile_edit .profile_field_preview_protector label.select{display:block}
+#edit_team_profile_edit .profile_field_preview_protector label.select:active:after,#edit_team_profile_edit .profile_field_preview_protector label.select:after,#edit_team_profile_edit .profile_field_preview_protector label.select:hover:after{color:#555459}
+#edit_team_profile_edit .profile_field_preview_protector .profile_field_preview{padding:2rem}
+#edit_team_profile_edit .row{position:relative}
+#edit_team_profile_edit .row.option_row.show_remove_action p{padding-right:3.0625rem}
+#edit_team_profile_edit .row.option_row.show_remove_action input{border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:.25rem;border-top-left-radius:.25rem;background-clip:border-box}
+#edit_team_profile_edit .row.option_row.show_remove_action i{border:1px solid #C5C5C5;border-left-color:transparent;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem;border-bottom-left-radius:0;border-top-left-radius:0;background-clip:border-box;visibility:visible;display:block}
+#edit_team_profile_edit .row.option_row.show_remove_action i:active,#edit_team_profile_edit .row.option_row.show_remove_action i:hover{background-color:#CB5234;border-color:#CB5234!important;color:#fff}
+#edit_team_profile_edit .row.option_header_row{margin-bottom:.25rem}
+#edit_team_profile_edit .row i{border:1px solid #C5C5C5;color:#BABBBF;cursor:pointer;padding:.8125rem .875rem .5625rem;position:absolute;bottom:0;right:0;visibility:hidden;display:none}
+#edit_team_profile_edit #option_rows .row:last-child .col{margin-bottom:0}
+#edit_team_profile_custom .row:first-child .col:first-child input::-webkit-input-placeholder{top:-.1875rem}
+#edit_team_profile_custom .row:first-child .col:first-child input:-moz-placeholder{top:-.1875rem}
+#edit_team_profile_custom .row:first-child .col:first-child input::-moz-placeholder{top:-.1875rem}
+#edit_team_profile_custom .row:first-child .col:first-child input:-ms-input-placeholder{top:-.1875rem}
+#edit_team_profile_custom .row .col{margin-bottom:3%;width:48.5%}
+#edit_team_profile_custom .row .col+.col{margin-left:3%}
+#edit_team_profile_custom .row .col .profile_field_preview{cursor:pointer;background:#F7F7F7;border:2px solid #E8E8E8;padding:1rem 0 1rem 1rem}
+#edit_team_profile_custom .row .col input{cursor:pointer;background:#fff;border:1px solid #C5C5C5;border-right:none;border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:.25rem;border-top-left-radius:.25rem;background-clip:padding-box}
+#edit_team_profile_custom .row .col input:active,#edit_team_profile_custom .row .col input:focus{box-shadow:none}
+#edit_team_profile_custom .row .col input.lfs_input{border:none}
+#edit_team_profile_custom .row .col .lfs_item{border-color:#BABBBF;background:#BABBBF}
+#edit_team_profile_custom .row .col .edit_team_profile_lazy_filter_select{padding-right:0}
+#edit_team_profile_custom .row .col .edit_team_profile_lazy_filter_select .lfs_input_container{border-right:none;border-top-right-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:.25rem;border-top-left-radius:.25rem;background-clip:padding-box}
+#edit_team_profile_custom .row .col span{font-size:1.25rem;display:block;padding-right:1rem}
+#edit_team_profile_custom .row .col .profile_field_preview:active,#edit_team_profile_custom .row .col .profile_field_preview:hover{border-color:#005E99}
+#edit_team_profile_custom .row .col .profile_field_preview:active span,#edit_team_profile_custom .row .col .profile_field_preview:hover span{color:#005E99}
+#edit_team_profile_custom .row .col[data-type=options_list] .profile_field_preview{padding-right:1rem}
+#edit_team_profile_custom .row .col[data-type=options_list] span{position:relative;padding-right:0}
+#edit_team_profile_custom .row .col[data-type=options_list] span:after{content:"\E271";color:#BABBBF;font-family:Slack;position:absolute;right:22px;bottom:-52px;font-size:20px;pointer-events:none}
+#edit_team_profile_custom .row .col[data-type=options_list] input{border-right:1px solid #C5C5C5;border-radius:.25rem}
+#edit_member_profile_cancel_edit_btn,#edit_member_profile_cancel_photo_crop_btn,#edit_member_profile_cancel_photo_delete_btn,#edit_member_profile_cancel_photo_format_error_btn,#edit_member_profile_cancel_photo_oversize_error_btn,#edit_member_profile_cancel_photo_size_error_btn,#edit_member_profile_cancel_photo_upload_btn,#edit_member_profile_confirm_photo_crop_btn,#edit_member_profile_confirm_photo_delete_btn,#edit_member_profile_retake_photo_crop_btn,#edit_member_profile_retry_photo_format_error_btn,#edit_member_profile_retry_photo_oversize_error_btn,#edit_member_profile_retry_photo_size_error_btn,#edit_team_profile_add_existing_btn,#edit_team_profile_add_new_btn,#edit_team_profile_cancel_delete_btn,#edit_team_profile_cancel_edit_btn,#edit_team_profile_cancel_hide_btn,#edit_team_profile_confirm_delete_btn,#edit_team_profile_confirm_edit_btn,#edit_team_profile_confirm_hide_btn{font-size:1rem;font-weight:700;min-height:3.0625rem;padding:14px 32px 16px;margin-bottom:0}
+#edit_member_profile_confirm_photo_crop_btn,#edit_member_profile_confirm_photo_delete_btn,#edit_member_profile_retry_photo_format_error_btn,#edit_member_profile_retry_photo_oversize_error_btn,#edit_member_profile_retry_photo_size_error_btn,#edit_team_profile_confirm_delete_btn,#edit_team_profile_confirm_edit_btn,#edit_team_profile_confirm_hide_btn{min-width:24.6%}
+.profile_field_preview_protector{position:relative;z-index:1}
+.profile_field_preview_protector .profile_field_preview{background:#fff;border:1px solid #E8E8E8;border-radius:.125rem;position:relative;padding:2rem 0 2rem 2rem}
+.profile_field_preview_protector .profile_field_preview:after,.profile_field_preview_protector .profile_field_preview:before{content:"";background-color:#fff;z-index:-1;position:absolute;width:48%;height:20%;bottom:.75rem;box-shadow:0rem .75rem .75rem rgba(0,0,0,.25)}
+.profile_field_preview_protector .profile_field_preview:before{left:.25rem;-webkit-transform:rotate(-2deg);-moz-transform:rotate(-2deg);-ms-transform:rotate(-2deg);transform:rotate(-2deg)}
+.profile_field_preview_protector .profile_field_preview:after{right:.25rem;-webkit-transform:rotate(2deg);-moz-transform:rotate(2deg);-ms-transform:rotate(2deg);transform:rotate(2deg)}
+.profile_field_preview_protector .profile_field_preview input:disabled,.profile_field_preview_protector .profile_field_preview select:disabled{background:#fff;color:#555459;cursor:default!important}
+.profile_field_preview_protector .profile_field_preview .profile_field_preview_fade_out_mask{background:linear-gradient(to left,#fff,rgba(255,255,255,0));position:absolute;top:0;right:0;width:50%;height:100%}
+.profile_field_preview_protector .profile_field_preview .profile_field_preview_ribbon{font-size:.6875rem;padding:.125rem 2rem;position:absolute;left:100%;top:0;line-height:1rem;-webkit-transform:translate(-5.125rem,.9375rem) rotate(45deg);-moz-transform:translate(-5.125rem,.9375rem) rotate(45deg);-ms-transform:translate(-5.125rem,.9375rem) rotate(45deg);transform:translate(-5.125rem,.9375rem) rotate(45deg)}
+.profile_field_preview_protector .profile_field_preview .profile_field_preview_ribbon:after,.profile_field_preview_protector .profile_field_preview .profile_field_preview_ribbon:before{content:'';border-style:solid;position:absolute;top:-.25rem}
+.profile_field_preview_protector .profile_field_preview .profile_field_preview_ribbon:before{border-color:transparent transparent transparent #fff;border-width:0 0 2.5rem 2.5rem;left:-.5rem}
+.profile_field_preview_protector .profile_field_preview .profile_field_preview_ribbon:after{border-color:#fff transparent transparent;border-width:2.5rem 0 0 2.5rem;right:-.5rem}
+.team_profile_fields_img{width:153px!important;height:171px!important}
+#edit_member_profile_container{height:100%}
+#edit_member_profile_container .col:not(.btn){padding-right:0}
+#edit_member_profile_container .lfs_list_container.visible{margin-bottom:4rem}
+#edit_member_profile_container .member_image_wrapper{cursor:pointer;display:inline-block;height:192px;width:192px;position:relative}
+#edit_member_profile_container .upload_camera_icon:before{display:none}
+#edit_member_profile_container .profile_field__icon--scim_provisioned:before{position:relative;top:3px}
+#edit_member_profile_container .member_image_wrapper.active .upload_camera_icon:before,#edit_member_profile_container .member_image_wrapper:hover .upload_camera_icon:before{color:#fff;position:absolute;display:inline-block;z-index:1;font-size:40px;top:55px;left:76px}
+#edit_member_profile_container .member_image_wrapper.active .upload_camera_icon:before .member_image,#edit_member_profile_container .member_image_wrapper:hover .upload_camera_icon:before .member_image{position:absolute;top:0}
+#edit_member_profile_container .member_image_wrapper.active:before,#edit_member_profile_container .member_image_wrapper:hover:before{content:attr(data-instructions-text);position:absolute;box-sizing:border-box;padding:5.5rem 2rem 0;font-family:Slack-Lato,appleLogo,sans-serif;font-weight:700;text-align:center;color:#fff;background-color:rgba(0,0,0,.7);border:.25rem solid #2D9EE0;border-radius:.2rem;top:0;left:0;width:192px;height:192px;z-index:1}
+#edit_member_profile_container .member_image_wrapped,#edit_member_profile_container .member_image_wrapped_no_photo{display:inline-block;height:192px;width:192px;position:relative}
+#edit_member_profile_container .member_image_wrapped_no_photo:after{box-sizing:border-box;position:absolute;content:attr(data-instructions-text);font-family:Slack-Lato,appleLogo,sans-serif;font-size:1rem;text-align:center;padding-top:70px;padding-right:40px;padding-left:40px;background-color:rgba(255,255,255,.8);border-radius:.2rem;top:0;left:0;height:192px;width:192px;outline:gray dashed .125rem;outline-offset:-1rem}
+#edit_member_profile_container .member_image_upload{display:inline-block;z-index:11;height:192px;width:192px;position:relative}
+#edit_member_profile_container .member_image_upload:after{box-sizing:border-box;position:absolute;content:attr(data-instructions-text);font-family:Slack-Lato,appleLogo,sans-serif;color:#007AB8;font-size:.9rem;font-weight:700;text-align:center;padding-top:140px;padding-right:30px;padding-left:30px;background-color:#D7E8F7;border-radius:.2rem;top:0;left:0;height:192px;width:192px;outline:#007AB8 dashed 2px;outline-offset:-1rem}
+#edit_member_profile_container .file_drop_icon{position:absolute;display:inline-block;z-index:100;height:140px;padding-left:33px;top:-20px;pointer-events:none}
+#edit_member_profile_container .member_image_upload.hovered:after{background-color:#C7DFF4}
+#edit_member_profile_container .member_upload{max-width:192px;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;color:#007AB8;font-size:.95rem;padding-top:10px}
+#edit_member_profile_container .member_upload a{padding-left:10px}
+#edit_member_profile_container .show_delete{max-width:192px;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;color:#9e9ea6;font-size:.95rem;padding-top:10px}
+#edit_member_profile_container .show_delete a{padding-left:10px;color:#9e9ea6}
+#edit_member_profile_container ts-icon.member_upload::before,#edit_member_profile_container ts-icon.show_delete::before{margin-top:-3px}
+#edit_member_profile_container label{cursor:default}
+#edit_member_profile_container input[type=text]+.input_note{display:inline-block;margin-top:.25rem}
+#edit_member_profile_container .photo_well{background-color:#E8E8E8;border-radius:1rem;width:460px;height:460px;margin:0 auto;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-moz-align-items:center;align-items:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-moz-justify-content:center;justify-content:center;-ms-flex-direction:column;-moz-flex-direction:column;-webkit-flex-direction:column;flex-direction:column}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_input,#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_preset_option .current_status{font-size:1.25rem}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_preset_option{padding-left:13px;line-height:2rem}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_preset_option .current_status{padding-left:5px}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_input{padding-left:3.875rem;padding-right:2.5rem}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container #menu_items{margin:6px 0 8px}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_emoji_picker{top:0;width:3.5rem}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_emoji_picker .current_status_empty_emoji{line-height:3rem;height:100%}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .status_clear_icon_wrap{top:12.5px;right:12.5px}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .status_clear_icon_wrap .status_clear_icon{color:inherit}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_emoji_picker,#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .emoji-sizer{line-height:3.5rem;font-size:1.5rem;margin-bottom:0}
+#edit_member_profile_container .current_status_input_for_edit_profile.current_status_input_container .current_status_action_buttons{display:none}
+.edit_member_profile_photo__modal_container{position:relative;padding:0 1.5rem;margin-top:3rem;width:100%}
+.edit_member_profile_photo__capture_preview{position:relative;overflow:hidden;max-width:460px;max-height:460px;width:80vw;height:80vw;margin:0 auto;background-color:#E8E8E8;border:1px solid rgba(0,0,0,.2);border-radius:.4rem;-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0)}
+.edit_member_profile_photo__preview_video{width:auto;height:100%;margin-left:50%;-webkit-transform:translateX(-50%) scaleX(-1);-moz-transform:translateX(-50%) scaleX(-1);-ms-transform:translateX(-50%) scaleX(-1);transform:translateX(-50%) scaleX(-1);-webkit-transition:opacity 1s ease;-moz-transition:opacity 1s ease;transition:opacity 1s ease}
+.edit_member_profile_photo__preview_overlay{position:absolute;top:0;left:0;right:0;width:100%;height:100%;font-size:20px;line-height:30px;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-moz-align-items:center;align-items:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-moz-justify-content:center;justify-content:center;-webkit-transition:opacity 1s ease;-moz-transition:opacity 1s ease;transition:opacity 1s ease;z-index:-1}
+.edit_member_profile_photo__capture_button,.edit_member_profile_photo__capture_countdown{position:absolute;left:0;right:0;bottom:-40px;margin:0 auto;text-align:center;width:80px;height:80px;border-radius:80px;border:1px solid rgba(0,0,0,.2);display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-moz-align-items:center;align-items:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-moz-justify-content:center;justify-content:center}
+.edit_member_profile_photo__capture_button{background-color:#eb4d5c;cursor:pointer}
+.edit_member_profile_photo__capture_countdown{background-color:#fff;font-weight:900;font-size:36px}
+.edit_member_profile_photo__capture_icon:before{color:#fff;font-size:40px}
+.edit_member_profile_photo__countdown_text{position:absolute;top:1.25rem;left:0;right:0;margin:0 auto;color:#50acf4}
+#edit_member_profile_photo_container{position:absolute;right:0}
+.edit_member_profile_photo__crop_container{padding:0 5.5rem}
+.edit_member_profile_photo__crop_container #edit_member_profile_photo_preview{border-radius:.2rem;position:absolute;top:0;right:0;width:4.5rem;height:4.5rem}
+.edit_member_profile_photo__crop_container .jcrop-holder{margin:auto}
+.hidden_file_input{width:0;height:0;margin:0;padding:0;overflow:hidden}
+#fs_modal.stop_pointer_events #fs_modal_back_btn,#fs_modal.stop_pointer_events #fs_modal_close_btn{pointer-events:none}
+li input[data-action=edit_member_profile_upload_photo]{cursor:pointer;position:absolute;opacity:0;height:25px;width:100%;left:0}
+li input[data-action=edit_member_profile_upload_photo]::-webkit-file-upload-button{visibility:hidden}
+@media only screen and (max-width:512px){.edit_member_profile_photo__crop_container{padding:0}
+.edit_member_profile_photo__crop_container #edit_member_profile_photo_preview{display:none;visibility:hidden}
+}
+@media only screen and (max-width:1024px){.tab_set.customize_tab_set a{padding:12px 12px 11px}
+}
+@media only screen and (max-width:767px){.center_and_narrow{padding:0}
+#edit_team_profile_list .row:nth-child(2){border-top-color:transparent}
+#edit_team_profile_list .row:nth-child(n+5){padding-right:5rem}
+#edit_team_profile_list .row:nth-child(n+5).active,#edit_team_profile_list .row:nth-child(n+5):active,#edit_team_profile_list .row:nth-child(n+5):hover{padding-right:4.9375rem}
+#edit_team_profile_list .row:nth-child(n+5).active .col+.col,#edit_team_profile_list .row:nth-child(n+5):active .col+.col,#edit_team_profile_list .row:nth-child(n+5):hover .col+.col{padding-left:0}
+#edit_team_profile_list .row .col{padding:0}
+#edit_team_profile_list .row .col:last-child{text-align:left!important}
+#edit_team_profile_list .row .col.span_2_of_6{padding-top:.875rem}
+#edit_team_profile_list .row .col.span_3_of_6{padding-bottom:.875rem}
+#edit_team_profile_list .row.default_row .col.span_3_of_6{padding-bottom:0}
+#edit_team_profile_list .row.default_row .col.span_1_of_6{padding-bottom:.875rem}
+#edit_team_profile_add .row:not(.header_row){padding-right:3rem}
+#edit_team_profile_custom .row .col+.col{margin-left:0}
+#edit_member_profile_cancel_edit_btn,#edit_member_profile_cancel_photo_crop_btn,#edit_member_profile_cancel_photo_delete_btn,#edit_member_profile_cancel_photo_format_error_btn,#edit_member_profile_cancel_photo_oversize_error_btn,#edit_member_profile_cancel_photo_size_error_btn,#edit_member_profile_cancel_photo_upload_btn,#edit_member_profile_retake_photo_crop_btn,#edit_team_profile_add_new_btn,#edit_team_profile_cancel_delete_btn,#edit_team_profile_cancel_edit_btn,#edit_team_profile_cancel_hide_btn{margin:0 0 2%}
+#edit_member_profile_photo_container{position:relative;-ms-order:-1;-webkit-order:-1;-moz-order:-1;-ms-flex-order:-1;order:-1}
+}

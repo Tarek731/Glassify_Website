@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Better Job Searching Through Psychometrics</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<!-- jQuery CDN -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js"></script>
+	  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <!-- Traitify API Render -->
+   <script src="https://cdn.traitify.com/js/widgets/v1.js"></script>
+<!-- Traitify Results Library -->
+   <script src="https://cdn.traitify.com/lib/v1.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <!-- Icons in Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Roboto Font stlye -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Ultra" rel="stylesheet">
+
+</head>
+<body>
+
+ 
+
+	<!-- Banner -->
+  <nav class="grid">
+    <nav class="grid-item top-nav col s12">
+      <div class="nav-wrapper col s12 col 12 ">
+         <p class="about">About</p>
+         <p class="home">Home</p>
+      </div>
+      <div>
+        <img class="logo" src="assets/images/mocklogo.png">
+      </div>
+    </nav>
+  </nav>
+
+<!-- Intro Explanatory Text -->
+  <div class="intro col s12 m12 l12 xl12">
+    <p>Let's start with a psychological assessment. Press the button below to begin. </p>
+    <br>
+    <a class=" introbutton button waves-effect waves-light btn-large">Begin!</a>
+  </div>
+
+
+<!-- State and city input fields appear here if user declines geo location -->
+<div class="row">
+  <div class="traitifyAssessment col s12">
+
+  </div>
+</div>
+
+ <!-- Traitify API renders Psychological Assessment in this Div -->
+<div class="assessment">
+  
+</div>
+ <!-- <br>
+ <a class="continuebutton button waves-effect waves-light btn-large">Generate Traitify Buttons!</a>
+     </form> -->
+
+<div class="results intro">
+    <a id="submit" class="continuebutton waves-effect waves-light btn-large">Jobs Open For You!</a>
+    <div class="glassdoorResults">
+    </div>
+    <div class="entryArea">
+        <!-- State and city input fields appear here if user declines geo location -->
+        <div class="row">
+          <form class="traitifyAssessment col s12">
+                <div class="row">
+                  <div class="input-field col s2" id="localcity">
+                    <input class="city" type="text" class="validate">
+                    <label for="last_name">Your City</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s2" id="localstate">
+                    <input id="Placeholder" class="state" type="text" class="validate">
+                    <label for="first_name">Your State</label>
+                  </div>
+                </div>
+          </form>
+          <form class="whaatTheFuckBloc col s12">
+                <div class="row">
+                  <div class="input-field col s2" id="jobs">
+                    <input class="desired-job" type="text" class="validate">
+                    <label for="last_name">Desired Job</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="newEntryArea col s2" id="radius">
+                    <input id="Placeholder" class="search-radius" type="text" class="validate">
+                    <label for="first_name">Search Radius</label>
+                  </div>
+                </div>
+          </form>
+        </div>
+      
+    </div>
+    <div class="newButtonArea">
+      
+    </div>
+</div>
+<a href='https://www.glassdoor.com/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
+
+<!-- Google maps latitude and longitude API -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<script type="text/javascript" src="assets/javascript/script.js"></script>
+</body>
+</html>
