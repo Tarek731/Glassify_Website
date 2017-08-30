@@ -1,4 +1,4 @@
-< ### Glassify_Website
+### Glassify_Website
 ## Better-Job-Searching-with-Psychometrics
 ### Project Details
 
@@ -18,7 +18,7 @@
 
 > 'css, jquery, HTML, javascript, Bootstrap, Materialize, Traitify API, GlassDoor API'
 
-###Authors
+### Authors
 
 >Steven Andrews ('Front End, Materialize Bootstrap') Isaac Manayath Front End, ('Materialize Bootstrap') Tarek Adam ('Back End, Traitify API') Erick Delgado ('Back-End, Glass Door API')
 
